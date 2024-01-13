@@ -10,8 +10,8 @@ $routes->get('/', 'Home::index');
 
 $routes->group('back-panel', static function ($routes) {
 
-    
-    $routes->group('/', ['namespace' => 'App\Controllers'], static function ($routes) {
+    $routes->match(['get','post'], '/', 'AuthController::Auth');    
+    $routes->group('/', ['filter'=>'authFilter','namespace' => 'App\Controllers'], static function ($routes) {
         $routes->get('dashboard', 'DashboardController::index');
        
     });

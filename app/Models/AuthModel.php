@@ -37,4 +37,19 @@ class AuthModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function Auth($username){
+
+        $query = $this->db->table('users')
+                 ->select('users.*')
+                 ->groupStart()
+                    ->where(['users.username' => $username])
+                    ->orWhere(['users.email' => $username])
+                 ->groupEnd()
+                 ->get();
+        $result = $query->getRow();
+    return $result;
+
+    }
 }
