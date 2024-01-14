@@ -13,6 +13,8 @@ $routes->group('back-panel', static function ($routes) {
     $routes->match(['get','post'], '/', 'AuthController::Auth');    
     $routes->group('/', ['filter'=>'authFilter','namespace' => 'App\Controllers'], static function ($routes) {
         $routes->get('dashboard', 'DashboardController::index');
+        $routes->get('logout', 'AuthController::logout');
+        $routes->match(['get','post'], 'update-profile', 'AuthController::updateProfile');
        
     });
 });

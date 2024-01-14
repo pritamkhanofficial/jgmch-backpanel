@@ -6,13 +6,27 @@ use CodeIgniter\Model;
 
 class AuthModel extends Model
 {
-    protected $table            = 'auths';
+    protected $table            = 'users';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
+    protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'username',
+        'email',
+        'password',
+        'mobile',
+        'full_name',
+        'profile_pic',
+        'generate_token',
+        'generate_on',
+        'is_online',
+        'is_block',
+        'is_active',
+        'created_by',
+        'updated_by',
+    ];
 
     // Dates
     protected $useTimestamps = false;

@@ -32,14 +32,11 @@ function UploadFile(\CodeIgniter\HTTP\Files\UploadedFile $imageFile, $folder=NUL
         if ($imageFile->hasMoved()) {
             return;
         }
-        if(!empty(getCurrentUserData()->institute_prefix)){
-            $upload_dir = UPLOAD_DIR.'/'.getCurrentUserData()->institute_prefix.'/';
-        }else{
-            $upload_dir = UPLOAD_DIR;
-        }
+        
+        $upload_dir = UPLOAD_DIR;
         $upload_dir = empty($folder) ? $upload_dir : $upload_dir.$folder;
         if (!file_exists($upload_dir)) {
-            mkdir($upload_dir,0777, true);
+            mkdir($upload_dir, 0777, true);
         }
         $imageName = uniqid() . '.' . $imageFile->getExtension();
         if(!is_null($editFileName)){
@@ -253,7 +250,7 @@ function getPrint($data = NULL){
 }
 
 function getFileURL(){
-    return base_url('public/uploads/');
+    return base_url('uploads/');
 }
 function getTimeZone(){
     $timezon_arr = array (
@@ -700,11 +697,7 @@ function getDateFormat()
                 if($payload->profile_pic === 'default.png'){
                     $payload->user_profile_pic = base_url('public/assets/images/users/').$payload->profile_pic;
                 }else{
-                    if(empty($payload->institute_prefix)){
-                        $payload->user_profile_pic = getFileURL().'/'.$payload->profile_pic;
-                    }else{
-                        $payload->user_profile_pic = getFileURL().$payload->institute_prefix.'/'.$payload->profile_pic;
-                    }
+                    $payload->user_profile_pic = getFileURL().$payload->profile_pic;
                 }
             }else{
                 $payload->user_profile_pic = base_url('public/assets/images/users/default.png');
