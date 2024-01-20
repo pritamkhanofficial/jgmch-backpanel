@@ -73,7 +73,7 @@
                     <!-- item-->
                     <a class="dropdown-item" href="<?=base_url('back-panel/update-profile')?>"><i class="bx bx-user font-size-16 align-middle me-1"></i>
                         <span key="t-profile">Profile</span></a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open-alt font-size-16 align-middle me-1"></i>
+                    <a class="dropdown-item" href="<?=base_url('back-panel/change-password')?>"><i class="bx bx-lock-open-alt font-size-16 align-middle me-1"></i>
                         <span key="t-my-wallet">Change Password</span></a>
 
                     <div class="dropdown-divider"></div>

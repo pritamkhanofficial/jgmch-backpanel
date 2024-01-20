@@ -142,6 +142,65 @@ class AuthController extends BaseController
         return view('auth/profile');
     }
 
+    public function changePassword()
+    {
+        if($this->request->getVar('submit') == 'submit'){
+
+            $rules = [
+                'password' => [
+                    'label' => 'Password',
+                    'rules' => [
+                        'required',
+                        static function ($value, $data, &$error, $password) {
+                            $model = new AuthModel();
+                            $authData = $model->find(getUserData()->id);
+                            $authenticatePassword = password_verify($value, $authData->password);
+                            if (!$authenticatePassword) {
+                                $error = 'Current password does not match.';
+                                return false;
+                            }
+                            return true;
+                        },
+                    ],
+                ],
+                'new_password' => [
+                    'label' => 'New Password',
+                    'rules' => 'required'
+                ],
+                'confirm_password' => [
+                    'label' => 'Confirm Password',
+                    'rules' => 'required|matches[new_password]'
+                ]
+            ];
+            
+            if(!$this->validate($rules)){
+                
+                return $this->response->setJSON([
+                    'success'=>false,
+                    'message'=>$this->validator->getErrors(),
+                ]);
+            }
+            $model = new AuthModel();
+            $data = [
+                'password'=>getHash($this->request->getVar('confirm_password'))
+            ];
+            if($model->update(getUserData()->id, $data)){
+                $this->generateFlash([
+                    'type'=>'success',
+                    'title'=>'Success',
+                    'message'=>'Password Change Successfully',
+                ]);
+                return $this->response->setJSON([
+                    'success'=>true
+                ]);
+            }
+            
+
+
+        }
+        return view('auth/change-password');
+    }
+
 
     public function logout()
     {
