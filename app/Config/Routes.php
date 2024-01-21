@@ -31,6 +31,12 @@ $routes->group('back-panel', static function ($routes) {
         $routes->match(['get', 'post'],'about-hospital/', 'HomeController::aboutHospital');
         $routes->match(['get', 'post'],'about-hospital/(:segment)', 'HomeController::aboutHospital/$1');
         $routes->match(['get', 'post'],'about-hospital/(:segment)/(:segment)', 'HomeController::aboutHospital/$1/$2');
+
+
+
+        $routes->match(['get', 'post'],'gallery/', 'HomeController::Gallery');
+        $routes->match(['get', 'post'],'gallery/(:segment)', 'HomeController::Gallery/$1');
+        $routes->match(['get', 'post'],'gallery/(:segment)/(:segment)', 'HomeController::Gallery/$1/$2');
        
     });
 });
