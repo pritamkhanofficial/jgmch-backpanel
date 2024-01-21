@@ -14,6 +14,7 @@
 <link href="<?=base_url('')?>back/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 <!-- Teaster Css -->
 <link href="<?=base_url('')?>back/css/toastr.min.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url('')?>back/css/custom.css" rel="stylesheet" type="text/css" />
 
 <style>
     .error{

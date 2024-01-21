@@ -4,12 +4,6 @@
 <head>
 
     <?=view('component/back/head')?>
-
-    <?php 
-foreach($css_files as $file): ?>
-    <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
-    <?php endforeach; ?>
-
 </head>
 
 <body data-sidebar="dark" data-layout-mode="light">
@@ -48,8 +42,31 @@ foreach($css_files as $file): ?>
                     <div class="row">
 
                         <div class="col-md-12">
+                            <div class='card'>
+                            <div class="card-body">
+                                    <h4 class="card-title mb-4">Add Slider</h4>
+                                    <?php 
+                                    $attributes = ['class' => 'form-horizontal','enctype'=>"multipart/form-data", "id"=>"addSlider"];
+                                    echo form_open("",$attributes);
+                                    ?>
 
-                            <?php echo $output; ?>
+                                    <div class="row mb-3 required">
+                                        <label for="image" class="col-form-label col-md-2">Image</label>
+                                        <div class="col-md-10">
+                                            <input type="file" required name="image" accept=".jpg, .jpeg, .png"
+                                                class="form-control" id="image">
+                                            <div class="error image"></div>
+
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="submit" name="submit" id="submit" value="submit"
+                                            class="btn btn-success w-md">Submit</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
@@ -75,23 +92,11 @@ foreach($css_files as $file): ?>
 
     <?=view('component/back/script')?>
 
-    <?php foreach($js_files as $file): ?>
-    <script src="<?php echo $file; ?>"></script>
-    <?php endforeach; ?>
-
-
     <script>
-    /* $("#changePassword").validate({
+    $("#addSlider").validate({
         rules: {
-            password: {
+            image: {
                 required: true
-            },
-            new_password: {
-                required: true
-            },
-            confirm_password: {
-                required: true,
-                equalTo: "#new_password"
             }
         },
         messages: {
@@ -101,10 +106,10 @@ foreach($css_files as $file): ?>
         }
 
     });
-    $("#changePassword").ajaxForm({
+    $("#addSlider").ajaxForm({
         contentType: 'application/json',
         beforeSubmit: function() {
-            var valid = $('#changePassword').valid();
+            var valid = $('#addSlider').valid();
             if (valid) {
                 $("#submit").html("Loading...")
                 return valid;
@@ -114,14 +119,14 @@ foreach($css_files as $file): ?>
             $("#submit").html("Change")
             if (response?.success) {
                 notification();
-                // window.location.reload(true);
+                window.location.href = "<?=base_url('back-panel/slider')?>";
             }
 
             $(".password").html(response.message?.password ?? '');
             $(".new_password").html(response.message?.new_password ?? '');
             $(".confirm_password").html(response.message?.confirm_password ?? '');
         }
-    }); */
+    });
     </script>
 
 </body>

@@ -4,20 +4,30 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Sliders extends Migration
+class Documents extends Migration
 {
     public function up()
     {
         $this->forge->addField([
             'id' => [
-                'type'           => 'INT',
-                'constraint'     => 10,
+                'type'           => 'BIGINT',
+                'constraint'     => 20,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'image' => [
+            'title' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'file' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
+            ],
+            'doc_type' => [
+                'type' => 'ENUM',
+                'null'    => true,
+                'constraint'    => ['NOTICE','TENDER','NE','ARS','MENU'],
+                'comment'    => 'NE For News/Events ARS For Anti Ragging Section'
             ],
             'is_active' => [
                 'type' => 'TINYINT',
@@ -36,17 +46,23 @@ class Sliders extends Migration
                 'type'           => 'BIGINT',
                 'constraint'     => 20,
                 'unsigned'       => true,
-                'null'           =>true
+                'null'           => true
             ],
             'deleted_at datetime default null',
+            'deleted_by' => [
+                'type'           => 'BIGINT',
+                'constraint'     => 20,
+                'unsigned'       => true,
+                'null'           => true
+            ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('sliders', true);
+        $this->forge->createTable('documents', true);
 
     }
 
     public function down()
     {
-        $this->forge->dropTable('sliders', true);
+        $this->forge->dropTable('documents', true);
     }
 }

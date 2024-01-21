@@ -19,8 +19,18 @@ $routes->group('back-panel', static function ($routes) {
         // $routes->match(['get','post'], 'change-password', 'HomeController::Slider');
 
         $routes->match(['get', 'post'],'slider/', 'HomeController::Slider');
-    $routes->match(['get', 'post'],'slider/(:segment)', 'HomeController::Slider/$1');
-    $routes->match(['get', 'post'],'slider/(:segment)/(:segment)', 'HomeController::Slider/$1/$2');
+        $routes->match(['get', 'post'],'slider/(:segment)', 'HomeController::Slider/$1');
+        $routes->match(['get', 'post'],'slider/(:segment)/(:segment)', 'HomeController::Slider/$1/$2');
+
+
+        $routes->match(['get', 'post'],'documents/', 'HomeController::Documents');
+        $routes->match(['get', 'post'],'documents/(:segment)', 'HomeController::Documents/$1');
+        $routes->match(['get', 'post'],'documents/(:segment)/(:segment)', 'HomeController::Documents/$1/$2');
+
+
+        $routes->match(['get', 'post'],'about-hospital/', 'HomeController::aboutHospital');
+        $routes->match(['get', 'post'],'about-hospital/(:segment)', 'HomeController::aboutHospital/$1');
+        $routes->match(['get', 'post'],'about-hospital/(:segment)/(:segment)', 'HomeController::aboutHospital/$1/$2');
        
     });
 });
