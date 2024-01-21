@@ -16,6 +16,11 @@ $routes->group('back-panel', static function ($routes) {
         $routes->get('logout', 'AuthController::logout');
         $routes->match(['get','post'], 'update-profile', 'AuthController::updateProfile');
         $routes->match(['get','post'], 'change-password', 'AuthController::changePassword');
+        // $routes->match(['get','post'], 'change-password', 'HomeController::Slider');
+
+        $routes->match(['get', 'post'],'slider/', 'HomeController::Slider');
+    $routes->match(['get', 'post'],'slider/(:segment)', 'HomeController::Slider/$1');
+    $routes->match(['get', 'post'],'slider/(:segment)/(:segment)', 'HomeController::Slider/$1/$2');
        
     });
 });
