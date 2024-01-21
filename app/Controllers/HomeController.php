@@ -41,10 +41,11 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['image', 'is_active']);
-        $crud->fields(['image', 'is_active','created_by']);
+        $crud->fields(['image', 'is_active','created_by','updated_by']);
         // $crud->setFieldUpload(['image', 'is_active','created_by']);
         $crud->callbackColumn('image', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
+        $crud->fieldType('updated_by', 'hidden', null);
         /* $crud->callbackAfterInsert(function ($stateParameters) {
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
@@ -81,7 +82,7 @@ class HomeController extends BaseController
                 } else {
                     $cbData->data['image'] = $ach_img_var;
                 }
- 
+                $cbData->data['updated_by'] = getUserData()->id;
                 return $cbData;
             }
         );
@@ -118,10 +119,11 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['title','file', 'doc_type', 'is_active']);
-        $crud->fields(['title','file', 'doc_type', 'is_active','created_by']);
+        $crud->fields(['title','file', 'doc_type', 'is_active','created_by','updated_by']);
         // $crud->setFieldUpload(['file', 'is_active','created_by']);
         $crud->callbackColumn('file', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
+        $crud->fieldType('updated_by', 'hidden', null);
         /* $crud->callbackAfterInsert(function ($stateParameters) {
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
@@ -171,6 +173,7 @@ class HomeController extends BaseController
                 } else {
                     $cbData->data['file'] = $ach_img_var;
                 }
+                $cbData->data['updated_by'] = \getUserData()->id;
  
                 return $cbData;
             }
@@ -198,9 +201,10 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['title','image', 'is_active']);
-        $crud->fields(['title','image', 'is_active','created_by']);
+        $crud->fields(['title','image', 'is_active','created_by','updated_by']);
         $crud->callbackColumn('image', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
+        $crud->fieldType('updated_by', 'hidden', null);
         /* $crud->callbackAfterInsert(function ($stateParameters) {
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
@@ -237,6 +241,7 @@ class HomeController extends BaseController
                 } else {
                     $cbData->data['image'] = $ach_img_var;
                 }
+                $cbData->data['updated_by'] = getUserData()->id;
  
                 return $cbData;
             }
@@ -277,15 +282,23 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         // $crud->where("deleted_at", NULL);
         $crud->columns(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation']);
-        $crud->fields(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation','description', 'history_and_heritage', 'map', 'address', 'created_by']);
+        $crud->fields(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation','description', 'history_and_heritage', 'map', 'address', 'created_by','updated_by']);
         $crud->setTexteditor(['description', 'history_and_heritage','address']);
         // $crud->setFieldUpload(['file', 'is_active','created_by']);
         $crud->callbackColumn('file', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
+        $crud->fieldType('updated_by', 'hidden', getUserData()->id);
         /* $crud->callbackAfterInsert(function ($stateParameters) {
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
         
+        $crud->callbackBeforeUpdate(
+            function ($cbData) {    
+                $cbData->data['updated_by'] = \getUserData()->id;
+ 
+                return $cbData;
+            }
+        );
 
 
         $crud->unsetDelete();
