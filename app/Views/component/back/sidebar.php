@@ -39,6 +39,12 @@
                     <span >Gallery</span>
                 </a>
             </li>
+            <li>
+                <a href="<?=base_url('back-panel/logout')?>" class="waves-effect">
+                <i class="bx bx-power-off"></i>
+                    <span >Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- Sidebar -->
