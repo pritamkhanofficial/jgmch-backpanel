@@ -53,13 +53,9 @@ class HomeController extends BaseController
         $crud->where("deleted_at", NULL);
         $crud->columns(['title','file', 'doc_type', 'is_active']);
         $crud->fields(['title','file', 'doc_type', 'is_active','created_by','updated_by']);
-        // $crud->setFieldUpload(['file', 'is_active','created_by']);
         $crud->callbackColumn('file', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
         $crud->fieldType('updated_by', 'hidden', null);
-        /* $crud->callbackAfterInsert(function ($stateParameters) {
-            return $this->saveLogData('add','state',$stateParameters->data);
-        }); */
 
         $crud->fieldType('doc_type', 'dropdown', [
             'NOTICE' => 'Notice',
@@ -73,7 +69,6 @@ class HomeController extends BaseController
         if ($crud->getState() === 'delete') {
             
             $result = $this->websiteModel->softDelete('documents', $crud->getStateInfo()->primary_key);
-            // getPrint($result);
             if($result){
                 return $this->response->setJSON([
                     'success'=>true,
@@ -82,12 +77,8 @@ class HomeController extends BaseController
             }
             
         }
-        // $crud->unsetAdd();
         $crud->unsetPrint();
         $crud->unsetExport();
-        /* $crud->callbackBeforeUpdate(function ($stateParameters) {
-            return $this->saveLogData('edit','state',$stateParameters->data);
-        }); */
         $crud->setTable('documents');
         $crud->setSubject('Document');
         $output = $crud->render();
@@ -104,66 +95,11 @@ class HomeController extends BaseController
         $crud->callbackColumn('image', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
         $crud->fieldType('updated_by', 'hidden', null);
-        /* $crud->callbackAfterInsert(function ($stateParameters) {
-            return $this->saveLogData('add','state',$stateParameters->data);
-        }); */
+        $this->fileHandle($crud, 'image','image');
 
-        $crud->callbackAddField(
-            'image',
-            function () {
-                return  '<input id="field-image" type="file" class="form-control w-100 " accept=".jpg, .jpeg, .png" name="image" value="">';
-            }
-        );
-
-        $crud->callbackEditField(
-            'image',
-            function ($data) {
-                $path = base_url() . 'uploads/' . $data;
- 
-                $html = $this->showFile($data);
-                $html .= '<input id="field-image" type="file" class="form-control" accept=".jpg, .jpeg, .png" name="image" value="">';
- 
-                $html .= '<input id="field-image" type="hidden" class="form-control" name="image_hidden" value="' . $data . '">';
-                return $html;
-            }
-        );
-
-        $crud->callbackBeforeUpdate(
-            function ($cbData) {
-                $toUpload = $this->request->getFile('image');
- 
-                $ach_img_var = $this->request->getVar('image_hidden');
- 
-                if (isset($toUpload)) {
-                    $image = UploadFile($toUpload, null, $ach_img_var);
-                    $cbData->data['image'] = $image;
-                } else {
-                    $cbData->data['image'] = $ach_img_var;
-                }
-                $cbData->data['updated_by'] = getUserData()->id;
- 
-                return $cbData;
-            }
-        );
-
-        $crud->callbackBeforeInsert(
-            function ($cbData) {
-                $toUpload = $this->request->getFile('image');
-                if (isset($toUpload)) {
-                    $image = UploadFile($toUpload);
-                    $cbData->data['image'] = $image;
- 
-                    return $cbData;
-                }
-            }
-        );
-
-
-        // $crud->unsetDelete();
         if ($crud->getState() === 'delete') {
             
             $result = $this->websiteModel->softDelete('gallery', $crud->getStateInfo()->primary_key);
-            // getPrint($result);
             if($result){
                 return $this->response->setJSON([
                     'success'=>true,
@@ -172,12 +108,8 @@ class HomeController extends BaseController
             }
             
         }
-        // $crud->unsetAdd();
         $crud->unsetPrint();
         $crud->unsetExport();
-        /* $crud->callbackBeforeUpdate(function ($stateParameters) {
-            return $this->saveLogData('edit','state',$stateParameters->data);
-        }); */
         $crud->setTable('gallery');
         $crud->setSubject('Gallery');
         $output = $crud->render();
