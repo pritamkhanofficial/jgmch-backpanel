@@ -63,7 +63,7 @@ class HomeController extends BaseController
                 $path = base_url() . 'uploads/' . $data;
  
                 $html = $this->showFile($data);
-                $html .= '<input id="field-image" type="file" class="form-control" accept=".jpg, .jpeg, .png" name="image" value="">';
+                $html .= '<input id="field-image" type="file" class="form-control mt-2" accept=".jpg, .jpeg, .png" name="image" value="">';
  
                 $html .= '<input id="field-image" type="hidden" class="form-control" name="image_hidden" value="' . $data . '">';
                 return $html;
@@ -128,6 +128,13 @@ class HomeController extends BaseController
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
 
+        $crud->fieldType('doc_type', 'dropdown', [
+            'NOTICE' => 'Notice',
+            'TENDER' => 'Tender',
+            'NE' => 'News/Events',
+            'ARS' => 'Anti Ragging Section',
+            'MENU' => 'Nav Menu'
+        ]);
         $crud->callbackAddField(
             'file',
             function () {
