@@ -52,11 +52,7 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['title','file', 'doc_type', 'is_active']);
-        $crud->fields(['title','file', 'doc_type', 'is_active','created_by','updated_by']);
-        $crud->callbackColumn('file', array($this, 'showFile'));
-        $crud->fieldType('created_by', 'hidden', getUserData()->id);
-        $crud->fieldType('updated_by', 'hidden', null);
-
+        $crud->fields(['title','file', 'doc_type', 'is_active','created_by','updated_at','updated_by']);
         $crud->fieldType('doc_type', 'dropdown', [
             'NOTICE' => 'Notice',
             'TENDER' => 'Tender',
@@ -91,10 +87,7 @@ class HomeController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['title','image', 'is_active']);
-        $crud->fields(['title','image', 'is_active','created_by','updated_by']);
-        $crud->callbackColumn('image', array($this, 'showFile'));
-        $crud->fieldType('created_by', 'hidden', getUserData()->id);
-        $crud->fieldType('updated_by', 'hidden', null);
+        $crud->fields(['title','image', 'is_active','created_by','updated_at','updated_by']);
         $this->fileHandle($crud, 'image','image');
 
         if ($crud->getState() === 'delete') {
