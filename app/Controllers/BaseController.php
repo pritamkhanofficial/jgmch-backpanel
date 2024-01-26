@@ -104,18 +104,18 @@ abstract class BaseController extends Controller
         $crud->callbackColumn($field, array($this, 'showFile'));
         $crud->callbackAddField(
           $field,
-          function () use ($accept) {
-              return  '<input id="field-image" type="file" class="form-control w-100 " accept="' . $accept . '" name="image" value="">';
+          function () use ($accept,$field) {
+              return  '<input id="field-' .$field. '" type="file" class="form-control w-100 " accept="' . $accept . '" name="' .$field. '" value="">';
           }
       );
 
       $crud->callbackEditField(
         $field,
-        function ($data)  use ($field) {
+        function ($data)  use ($accept,$field) {
             $path = base_url() . 'uploads/' . $data;
 
             $html = $this->showFile($data);
-            $html .= '<input id="field-image" type="file" class="form-control mt-2" accept=".jpg, .jpeg, .png" name="' . $field . '" value="">';
+            $html .= '<input id="field-image" type="file" class="form-control mt-2" accept="' . $accept . '" name="' . $field . '" value="">';
 
             $html .= '<input id="field-image" type="hidden" class="form-control" name="file_hidden" value="' . $data . '">';
             return $html;
@@ -142,9 +142,9 @@ abstract class BaseController extends Controller
 
             if (isset($toUpload)) {
                 $image = UploadFile($toUpload, null, $file_hidden);
-                $cbData->data['image'] = $image;
+                $cbData->data[$field] = $image;
             } else {
-                $cbData->data['image'] = $file_hidden;
+                $cbData->data[$field] = $file_hidden;
             }
             $cbData->data['updated_by'] = getUserData()->id;
             $cbData->data['updated_at'] = \getCurrentDate();
@@ -161,7 +161,9 @@ abstract class BaseController extends Controller
 
    public function showFile($value)
     {
-        $url = base_url('uploads/');
+      $path = "No File";
+        if(!empty($value)){
+          $url = base_url('uploads/');
         $type = pathinfo($value)['extension'];
         // die($type);
         $icon = '';
@@ -184,6 +186,8 @@ abstract class BaseController extends Controller
         }elseif($type == 'png' or $type == 'jpg' or $type == 'jpeg' or $type == 'bmp' or $type == 'webp' or $type == 'gif'){
             $path = '<img src=' . $url . $value . ' height="100" width="100">'; 
         }
+        }
+        
         
          return $path;
     }

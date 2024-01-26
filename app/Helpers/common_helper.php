@@ -39,7 +39,7 @@ function UploadFile(\CodeIgniter\HTTP\Files\UploadedFile $imageFile, $folder=NUL
             mkdir($upload_dir, 0777, true);
         }
         $imageName = uniqid() . '.' . $imageFile->getExtension();
-        if(!is_null($editFileName)){
+        if(!is_null($editFileName) && !empty($editFileName)){
             $path = $upload_dir .'/'. $editFileName;
             if(file_exists($path)){
                 unlink($path);

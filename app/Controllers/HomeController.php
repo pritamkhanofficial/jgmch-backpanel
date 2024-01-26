@@ -70,10 +70,6 @@ class HomeController extends BaseController
         ]);
         $this->fileHandle($crud, 'file','document');
 
-        
-
-
-        // $crud->unsetDelete();
         if ($crud->getState() === 'delete') {
             
             $result = $this->websiteModel->softDelete('documents', $crud->getStateInfo()->primary_key);
