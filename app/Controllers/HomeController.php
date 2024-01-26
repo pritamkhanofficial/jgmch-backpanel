@@ -7,7 +7,11 @@ use App\Models\WebsiteModel;
 
 class HomeController extends BaseController
 {
-    function showFile($value)
+    public $websiteModel = NULL;
+    public function __construct(Type $var = null) {
+        $this->websiteModel = new WebsiteModel();
+    }
+    public function showFile($value)
     {
         $url = base_url('uploads/');
         $type = pathinfo($value)['extension'];
@@ -45,6 +49,7 @@ class HomeController extends BaseController
         // $crud->setFieldUpload(['image', 'is_active','created_by']);
         $crud->callbackColumn('image', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
+        // echo "<pre>"; print_r($crud->getState()); die;
         $crud->fieldType('updated_by', 'hidden', null);
         /* $crud->callbackAfterInsert(function ($stateParameters) {
             return $this->saveLogData('add','state',$stateParameters->data);
@@ -63,7 +68,7 @@ class HomeController extends BaseController
                 $path = base_url() . 'uploads/' . $data;
  
                 $html = $this->showFile($data);
-                $html .= '<input id="field-image" type="file" class="form-control mt-2" accept=".jpg, .jpeg, .png" name="image" value="">';
+                $html .= '<input id="field-image" type="file" class="form-control" accept=".jpg, .jpeg, .png" name="image" value="">';
  
                 $html .= '<input id="field-image" type="hidden" class="form-control" name="image_hidden" value="' . $data . '">';
                 return $html;
@@ -100,8 +105,20 @@ class HomeController extends BaseController
         );
 
 
-        $crud->unsetDelete();
+        // $crud->unsetDelete();
         // $crud->unsetAdd();
+        if ($crud->getState() === 'delete') {
+            
+            $result = $this->websiteModel->softDelete('sliders', $crud->getStateInfo()->primary_key);
+            // getPrint($result);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+            
+        }
         $crud->unsetPrint();
         $crud->unsetExport();
         /* $crud->callbackBeforeUpdate(function ($stateParameters) {
@@ -128,13 +145,6 @@ class HomeController extends BaseController
             return $this->saveLogData('add','state',$stateParameters->data);
         }); */
 
-        $crud->fieldType('doc_type', 'dropdown', [
-            'NOTICE' => 'Notice',
-            'TENDER' => 'Tender',
-            'NE' => 'News/Events',
-            'ARS' => 'Anti Ragging Section',
-            'MENU' => 'Nav Menu'
-        ]);
         $crud->callbackAddField(
             'file',
             function () {
@@ -189,7 +199,19 @@ class HomeController extends BaseController
         
 
 
-        $crud->unsetDelete();
+        // $crud->unsetDelete();
+        if ($crud->getState() === 'delete') {
+            
+            $result = $this->websiteModel->softDelete('documents', $crud->getStateInfo()->primary_key);
+            // getPrint($result);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+            
+        }
         // $crud->unsetAdd();
         $crud->unsetPrint();
         $crud->unsetExport();
@@ -267,7 +289,19 @@ class HomeController extends BaseController
         );
 
 
-        $crud->unsetDelete();
+        // $crud->unsetDelete();
+        if ($crud->getState() === 'delete') {
+            
+            $result = $this->websiteModel->softDelete('gallery', $crud->getStateInfo()->primary_key);
+            // getPrint($result);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+            
+        }
         // $crud->unsetAdd();
         $crud->unsetPrint();
         $crud->unsetExport();

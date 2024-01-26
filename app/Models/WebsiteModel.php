@@ -49,4 +49,10 @@ class WebsiteModel extends Model
 
         return $this->db->table('about_hospital')->get()->getNumRows();
     }
+    public function softDelete($table, $id){
+        return  $this->db->table($table)->update([
+            'deleted_at'=> getCurrentDate(),
+            'deleted_by'=> getUserData()->id
+        ], ['id'=>$id]);
+    }
 }
