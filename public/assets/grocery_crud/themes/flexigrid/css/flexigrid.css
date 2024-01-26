@@ -314,6 +314,13 @@ table th
 .flexigrid input[type=text].form-control {
 	width: 500px;
 }
+
+.flexigrid input[type=file].form-control {
+	width: 500px;
+}
+.flexigrid select.chosen-select {
+	width: 500px;
+}
 .flexigrid div.form-div textarea
 {
 	font-size: 15px;

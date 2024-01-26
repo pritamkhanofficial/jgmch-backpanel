@@ -105,7 +105,7 @@ abstract class BaseController extends Controller
         $crud->callbackAddField(
           $field,
           function () use ($accept,$field) {
-              return  '<input id="field-' .$field. '" type="file" class="form-control w-100 " accept="' . $accept . '" name="' .$field. '" value="">';
+              return  '<input id="field-' .$field. '" type="file" class="form-control  " accept="' . $accept . '" name="' .$field. '" value="">';
           }
       );
 
@@ -151,8 +151,9 @@ abstract class BaseController extends Controller
             return $cbData;
         }
       );
-      $crud->fieldType('updated_by', 'hidden', null);
+      $crud->fieldType('created_by', 'hidden', getUserData()->id);
       $crud->fieldType('updated_at', 'hidden', null);
+      $crud->fieldType('updated_by', 'hidden', null);
       return $crud;
       }
 

@@ -19,7 +19,6 @@ class HomeController extends BaseController
         $crud->where("deleted_at", NULL);
         $crud->columns(['image', 'is_active']);
         $crud->fields(['image', 'is_active','created_by','updated_at','updated_by']);
-        $crud->fieldType('created_by', 'hidden', getUserData()->id);
         $this->fileHandle($crud, 'image','image');
         // $crud->unsetDelete();
         // $crud->unsetAdd();
