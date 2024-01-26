@@ -41,7 +41,7 @@ class Documents extends Migration
                 'constraint'     => 20,
                 'unsigned'       => true
             ],
-            'updated_at datetime default null on update current_timestamp',
+            'updated_at datetime default null',
             'updated_by' => [
                 'type'           => 'BIGINT',
                 'constraint'     => 20,
