@@ -163,8 +163,8 @@ abstract class BaseController extends Controller
    public function showFile($value)
     {
       $path = "No File";
-        if(!empty($value)){
-          $url = base_url('uploads/');
+      if(!empty($value)){
+        $url = base_url('get-file/'.$value);
         $type = pathinfo($value)['extension'];
         // die($type);
         $icon = '';
@@ -183,13 +183,12 @@ abstract class BaseController extends Controller
         // $icon = $type;
         if($type == 'pdf' or $type == 'xls' or $type == 'xlsx' or $type == 'doc' or $type == 'docx' or $type == 'txt'){
 
-            $path = '<a target="_new" href="'.$url . $value.'"> '. $icon .' </a>';
+            $path = '<a target="_new" href="'.$url .'"> '. $icon .' </a>';
         }elseif($type == 'png' or $type == 'jpg' or $type == 'jpeg' or $type == 'bmp' or $type == 'webp' or $type == 'gif'){
-            $path = '<img src=' . $url . $value . ' height="100" width="100">'; 
+            $path = '<img src=' . $url . ' height="100" width="100">'; 
         }
-        }
+      }
         
-        
-         return $path;
+      return $path;
     }
 }

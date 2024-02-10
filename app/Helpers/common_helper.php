@@ -2,6 +2,10 @@
 use CodeIgniter\HTTP\RequestInterface;
 use \Config\Database;
 
+function showFileToPath($filename)
+{
+    
+}
 function getGender(){
     return [
         '0' => 'Male',
