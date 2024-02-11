@@ -115,9 +115,9 @@ abstract class BaseController extends Controller
             $path = base_url() . 'uploads/' . $data;
 
             $html = $this->showFile($data);
-            $html .= '<input id="field-image" type="file" class="form-control mt-2" accept="' . $accept . '" name="' . $field . '" value="">';
+            $html .= '<input id="field-'.$field.'" type="file" class="form-control mt-2" accept="' . $accept . '" name="' . $field . '" value="">';
 
-            $html .= '<input id="field-image" type="hidden" class="form-control" name="file_hidden" value="' . $data . '">';
+            $html .= '<input id="field-'.$field.'" type="hidden" class="form-control" name="file_hidden_'.$field.'" value="' . $data . '">';
             return $html;
         }
       );
@@ -138,7 +138,7 @@ abstract class BaseController extends Controller
         function ($cbData)  use ($field) {
             $toUpload = $this->request->getFile($field);
 
-            $file_hidden = $this->request->getVar('file_hidden');
+            $file_hidden = $this->request->getVar('file_hidden_'.$field);
 
             if (isset($toUpload)) {
                 $image = UploadFile($toUpload, null, $file_hidden);

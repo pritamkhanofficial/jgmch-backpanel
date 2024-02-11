@@ -11,12 +11,16 @@ class FileController extends BaseController
     {
         $path = WRITEPATH . 'uploads/';
         $fullpath = $path . $filename;
-        $file = new \CodeIgniter\Files\File($fullpath, true);
-        $binary = readfile($fullpath);
-        return $this->response
-                ->setHeader('Content-Type', $file->getMimeType())
-                ->setHeader('Content-disposition', 'inline; filename="' . $file->getBasename() . '"')
-                ->setStatusCode(200)
-                ->setBody($binary);
+        if(is_file($fullpath)){
+            $file = new \CodeIgniter\Files\File($fullpath, true);
+            $binary = readfile($fullpath);
+            return $this->response
+                    ->setHeader('Content-Type', $file->getMimeType())
+                    ->setHeader('Content-disposition', 'inline; filename="' . $file->getBasename() . '"')
+                    ->setStatusCode(200)
+                    ->setBody($binary);
+        }
+        return null;
+        
     }
 }

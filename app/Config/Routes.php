@@ -16,27 +16,32 @@ $routes->group('back-panel', static function ($routes) {
         $routes->get('logout', 'AuthController::logout');
         $routes->match(['get','post'], 'update-profile', 'AuthController::updateProfile');
         $routes->match(['get','post'], 'change-password', 'AuthController::changePassword');
-        // $routes->match(['get','post'], 'change-password', 'HomeController::Slider');
+        // $routes->match(['get','post'], 'change-password', 'BackPanelController::Slider');
 
-        $routes->match(['get', 'post'],'slider/', 'HomeController::Slider');
-        $routes->match(['get', 'post'],'slider/(:segment)', 'HomeController::Slider/$1');
-        $routes->match(['get', 'post'],'slider/(:segment)/(:segment)', 'HomeController::Slider/$1/$2');
-
-
-        $routes->match(['get', 'post'],'documents/', 'HomeController::Documents');
-        $routes->match(['get', 'post'],'documents/(:segment)', 'HomeController::Documents/$1');
-        $routes->match(['get', 'post'],'documents/(:segment)/(:segment)', 'HomeController::Documents/$1/$2');
+        $routes->match(['get', 'post'],'slider/', 'BackPanelController::Slider');
+        $routes->match(['get', 'post'],'slider/(:segment)', 'BackPanelController::Slider/$1');
+        $routes->match(['get', 'post'],'slider/(:segment)/(:segment)', 'BackPanelController::Slider/$1/$2');
 
 
-        $routes->match(['get', 'post'],'about-hospital/', 'HomeController::aboutHospital');
-        $routes->match(['get', 'post'],'about-hospital/(:segment)', 'HomeController::aboutHospital/$1');
-        $routes->match(['get', 'post'],'about-hospital/(:segment)/(:segment)', 'HomeController::aboutHospital/$1/$2');
+        $routes->match(['get', 'post'],'documents/', 'BackPanelController::Documents');
+        $routes->match(['get', 'post'],'documents/(:segment)', 'BackPanelController::Documents/$1');
+        $routes->match(['get', 'post'],'documents/(:segment)/(:segment)', 'BackPanelController::Documents/$1/$2');
+
+
+        $routes->match(['get', 'post'],'about-hospital/', 'BackPanelController::aboutHospital');
+        $routes->match(['get', 'post'],'about-hospital/(:segment)', 'BackPanelController::aboutHospital/$1');
+        $routes->match(['get', 'post'],'about-hospital/(:segment)/(:segment)', 'BackPanelController::aboutHospital/$1/$2');
 
 
 
-        $routes->match(['get', 'post'],'gallery/', 'HomeController::Gallery');
-        $routes->match(['get', 'post'],'gallery/(:segment)', 'HomeController::Gallery/$1');
-        $routes->match(['get', 'post'],'gallery/(:segment)/(:segment)', 'HomeController::Gallery/$1/$2');
+        $routes->match(['get', 'post'],'gallery/', 'BackPanelController::Gallery');
+        $routes->match(['get', 'post'],'gallery/(:segment)', 'BackPanelController::Gallery/$1');
+        $routes->match(['get', 'post'],'gallery/(:segment)/(:segment)', 'BackPanelController::Gallery/$1/$2');
+
+
+        $routes->match(['get', 'post'],'content-management/', 'BackPanelController::contentManagement');
+        $routes->match(['get', 'post'],'content-management/(:segment)', 'BackPanelController::contentManagement/$1');
+        $routes->match(['get', 'post'],'content-management/(:segment)/(:segment)', 'BackPanelController::contentManagement/$1/$2');
        
     });
 });

@@ -5,7 +5,7 @@ use App\Libraries\GroceryCrud;
 use App\Models\WebsiteModel;
 
 
-class HomeController extends BaseController
+class BackPanelController extends BaseController
 {
     public $websiteModel = NULL;
     public function __construct(Type $var = null) {
@@ -148,6 +148,41 @@ class HomeController extends BaseController
         }); */
         $crud->setTable('about_hospital');
         $crud->setSubject('About Hospital');
+        $output = $crud->render();
+        return view('common', (array)$output);
+    }
+
+    public function contentManagement(){
+        $crud = new GroceryCrud();
+        $crud->displayAs('file','Document File');
+        $crud->displayAs('page_type','Page');
+        $crud->displayAs('is_active','Status');
+        $crud->columns(['page_type','banner', 'title_1', 'file_1', 'title_2','file_2','title_3','file_3']);
+        $crud->fields(['page_type','banner','content','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','created_by']);
+        $crud->setTexteditor(['content']);
+        $crud->fieldType('page_type', 'dropdown', [
+            '1' => 'Administrative staff',
+            '2' => 'OPD SCHEDULE',
+            '3' => 'Check List',
+            '4' => 'Admission Fees',
+            // 'MENU' => 'Nav Menu'
+        ]);
+        // if ($crud->getState() === 'add') {
+            $this->fileHandle($crud, 'banner','image');
+            $this->fileHandle($crud, 'file_1',null);
+        // }
+        
+        // $this->fileHandle($crud, 'file_2',null);
+        // $this->fileHandle($crud, 'file_3',null);
+        // $this->fileHandle($crud, 'file_4',null);
+        // $this->fileHandle($crud, 'file_5',null);
+        // $this->fileHandle($crud, 'file_6',null);
+        // $this->fileHandle($crud, 'file_7',null);
+        // $this->fileHandle($crud, 'file_8',null);
+        $crud->unsetPrint();
+        $crud->unsetExport();
+        $crud->setTable('content');
+        $crud->setSubject('Content');
         $output = $crud->render();
         return view('common', (array)$output);
     }
