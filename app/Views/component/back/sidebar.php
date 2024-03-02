@@ -39,6 +39,13 @@
                     <span >Gallery</span>
                 </a>
             </li>
+
+            <li>
+                <a href="<?=base_url('back-panel/hospital-head')?>" class="waves-effect">
+                <i class="  fas fa-images  "></i>
+                    <span >Hospital Head</span>
+                </a>
+            </li>
             <li>
                 <a href="<?=base_url('back-panel/content-management')?>" class="waves-effect">
                 <i class="  fas fa-images  "></i>

@@ -63,3 +63,7 @@ form div.required  label.control-label::after {
 .is-hide {
     display: none;
 }
+
+.crud-action{
+    font-size: 17px;
+}

@@ -105,7 +105,7 @@ class AuthController extends BaseController
                 $rules = [
                     'profile_pic' => [
                         'label' => 'Profile Pic',
-                        'rules' => 'uploaded[profile_pic]|max_size[profile_pic,200]|max_dims[profile_pic,350,350]|mime_in[profile_pic,image/png,image/jpeg,image/jpg]'
+                        'rules' => 'uploaded[profile_pic]|max_size[profile_pic,200]|mime_in[profile_pic,image/png,image/jpeg,image/jpg]'
                     ]
                 ];
                 

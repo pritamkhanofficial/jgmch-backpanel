@@ -1,0 +1,830 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+.dropdown-men{
+    box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+}
+.drop-shadow{
+     box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+-webkit-box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 4px 19px 0px rgba(0,0,0,0.75);
+}
+.slider-left-btn {
+    cursor: pointer !important;
+    background: rgba(0, 0, 0, 0.527) !important;
+    padding: 8px !important;
+    border-radius: 50px !important;
+}
+
+.slider-right-btn {
+    cursor: pointer !important;
+    background: rgba(0, 0, 0, 0.267) !important;
+    padding: 8px !important;
+    border-radius: 50px !important;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+    background: transparent !important;
+}
+
+.bg-l-light {
+    background-color: #fff !important;
+}
+
+.floatingNav {
+    /* width: calc(100vh - 100px);
+    border-radius: 2px; */
+    box-shadow: 0px 1px 10px #999;
+}
+
+:root {
+    --color-blue: blue;
+    --color-sky: navy;
+    --color-yellow: #fff36b;
+    --color-red: #8f2020;
+    --color-grey: #e4e4e4;
+    --color-lightblue: #0e849f;
+    --color-darkblue: #004762;
+    --color-white: #ffffff;
+}
+
+.border-2 {
+    border: 2px solid black !important;
+    border-radius: 5px;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgba(0, 0, 0, 0.5) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* LOGO-NAV */
+.d-none-one {}
+
+.d-none-two {
+    display: none;
+}
+
+/*.modal-content {
+    background-image: url("../images/logo/logo.png") !important;
+     background-position: center center;
+     background-repeat: no-repeat;
+     opacity: 0.75;
+
+}
+.modal-content {
+  background-image: url("../images/logo/logo.png") !important;
+     background-position: center center;
+     background-repeat: no-repeat;
+     opacity: 0.75;
+
+}
+.modal-dialog {
+    max-width: 50% !important;
+    margin: 1.75rem auto;
+    
+}*/
+.modal-dialog {
+    max-width: 50% !important;
+    margin: 1.75rem auto;
+
+}
+
+.modal-content {
+    position: relative;
+
+}
+
+.modal-header,
+.modal-body {
+    position: relative;
+    z-index: 2000;
+}
+
+.modal-content:after {
+    content: '';
+    position: absolute;
+    background-image: url(../images/logo/logo.png) !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    top: 50%;
+    opacity: 0.20;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 321px;
+}
+
+.modal-content {
+    padding: 2rem;
+
+
+}
+
+.height-500 {
+    height: 547px !important;
+}
+
+.over-flow-scroll {
+    overflow-x: scroll;
+}
+
+.text-blue {
+    color: var(--color-blue)
+}
+
+.bg-blue {
+    background-color: var(--color-blue)
+}
+
+.btn-blue {
+    max-width: 200px;
+    min-width: 140px;
+    color: #fff;
+    background: var(--bg-blue)
+}
+
+.bg-grey {
+    background-color: var(--color-grey)
+}
+
+.bg-lightblue {
+    background-color: var(--color-lightblue)
+}
+
+.text-lightblue {
+    color: var(--color-lightblue)
+}
+
+.text-sky {
+    color: var(--color-sky)
+}
+
+.bg-sky {
+    background-color: var(--color-sky)
+}
+
+.btn-sky {
+    max-width: 200px;
+    min-width: 140px;
+    color: #fff;
+    background: var(--bg-sky)
+}
+
+.text-yellow {
+    color: var(--color-yellow)
+}
+
+.bg-yellow {
+    background-color: var(--color-yellow)
+}
+
+.btn-yellow {
+    max-width: 200px;
+    min-width: 140px;
+    color: #fff;
+    background: var(--bg-yellow)
+}
+
+.text-red {
+    color: var(--color-red)
+}
+
+.bg-red {
+    background-color: var(--color-red)
+}
+
+.btn-red {
+    max-width: 200px;
+    min-width: 140px;
+    color: #fff;
+    background: var(--bg-red)
+}
+
+.bg-darkblue {
+    background-color: var(--color-darkblue)
+}
+
+.text-darkblue {
+    color: var(--color-darkblue)
+}
+.text-dark{
+    color:black !important;
+}
+.border-darkblue {
+    border-color: var(--color-darkblue)
+}
+
+/*navbar underline*/
+/*.navbar .navbar-nav .nav-item{
+position: relative;
+}
+.navbar .navbar-nav .nav-item :before{
+position:absolute;
+bottom: 0;
+left: 0;
+right: 0;
+margin: 0 auto;
+content: '';
+background-color:lightblue;
+width: 0%;
+height:4px;
+transition: all 0.5s;
+}
+.navbar .navbar-nav .nav-item :hover::before{
+width: 80%;
+}*/
+/*ends navbar underline*/
+.height-500 {
+    height: 547px !important;
+}
+
+.over-flow-scroll {
+    overflow-x: scroll;
+}
+.text{
+    margin-top: -16px !important;
+    
+}
+.PADD {
+    text-align: justify;
+    padding-inline: 34px;
+}
+
+.table th,
+.table td {
+    padding: 1.5rem !important;
+}
+
+body {
+    background-color: white !important;
+    color: black !important;
+}
+
+.link_clr a {
+    color: #3498db !important;
+}
+
+.form-control {
+    border: 1px solid black !important;
+    box-shadow: none !important;
+}
+
+.doc-drop {
+    width: 300px !important;
+}
+
+ul li a {
+    font-size: 15px !important;
+}
+
+.nav-dept {
+    font-size: 15px !important;
+}
+
+.btn-block {
+    width: 25% !important;
+}
+
+.owl-theme .owl-nav {
+    font-size: 37px !important;
+}
+
+.owl-carousel .owl-nav button.owl-next,
+.owl-carousel .owl-nav button.owl-prev,
+.owl-carousel button.owl-dot {
+    margin-right: 19px !important;
+}
+
+/*.active{
+background-color: lightblue!important;
+border-radius: 5px !important;
+}*/
+.color_hvr {
+    color: white !important;
+}
+
+.department:hover>.color_hvr {
+    color: black !important;
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #fff;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.dropdown-item:hover {
+    background-color: white !important;
+    color: black !important;
+}
+
+.nav-dept {
+    border: none !important;
+    margin-top: 8px !important;
+    background: none !important;
+}
+
+.dropdown-menu1 {
+    width: 450% !important;
+    background-color: white !important;
+}
+
+.navbar-nav li .dropdown-menu {
+    background-color: white;
+}
+
+.dropdown-menu li a {
+    background: white !important;
+    color: black !important;
+}
+
+.dropdown-menu>li a:hover,
+.dropdown-menu>li.show {
+    background: #ffffff !important;
+    color: black !important;
+}
+
+.dropdown-menu>li a:hover {
+    background-color: white !important;
+}
+
+.line-height {
+    line-height: 35px !important;
+}
+
+.nav-link {
+    color: black !important;
+}
+
+.height-70 {
+    height: 70px;
+}
+
+.card {
+    background-color: transparent !important;
+}
+
+#navbarNav ul li a {
+    font-size: 16px;
+}
+
+.info_sec {
+    position: relative;
+    top: -65px;
+}
+
+.info_hover,
+.attention,
+.department {
+    transition: all 1s;
+}
+
+.info_hover:hover {
+    margin-top: -15px !important;
+}
+
+.info_hover:hover {
+    background-color: lightblue !important;
+}
+
+.info_hover:hover img {
+    color: white !important;
+}
+
+.attention:hover {
+    background-color: var(--color-darkblue);
+    color: var(--color-yellow) !important;
+}
+
+.department:hover {
+    background-color: #fff;
+    color: #000 !important;
+}
+
+.border-darkblue {
+    border-color: #004762 !important;
+}
+
+.hr-border {
+    border: 3px solid #fff;
+}
+
+.modal-content {
+    background-color: #ffffff !important;
+}
+
+.ICON {
+    font-size: 180px !important;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.owl-carousel .item {
+    border: 1px solid black;
+    padding: 8px !important;
+    border-radius: 5px;
+    height:350px;
+    overflow: hidden;
+}
+
+.mtt-2 {
+    margin-top: 3%;
+}
+
+/*start media query*/
+@media (max-width:992px) {
+    .info_hover {
+        margin-bottom: 15px !important;
+    }
+
+    .department_media {
+        margin-right: 3px !important;
+    }
+
+    #common-image {
+        padding-left: 21px;
+    }
+
+    #common-name {
+        padding-left: 28px;
+    }
+
+    .card {
+        margin-left: 37px !important;
+    }
+
+    .text-justify {
+        text-align: justify !important;
+    }
+}
+
+@media (max-width:768px) {
+    .d-none-one {
+        display: none;
+    }
+
+    .d-none-two {
+        display: block;
+    }
+
+    .f-size {
+        font-size: 1rem;
+    }
+
+    .mtt-2 {
+        margin-top: 0%;
+    }
+
+    .info_hover {
+        margin-bottom: 15px !important;
+    }
+
+    .info_sec {
+        margin-top: 85px;
+    }
+
+    .department_media {
+        margin-right: 3px !important;
+    }
+
+    #common-image {
+        padding-left: 21px;
+    }
+
+    #common-name {
+        padding-left: 28px;
+    }
+
+    .card {
+        margin-left: 37px !important;
+    }
+
+    .text-justify {
+        text-align: justify !important;
+    }
+
+    .pb_mob {
+        padding-bottom: 43px !important;
+    }
+
+    .h-50 {
+        height: auto !important;
+    }
+
+    #brand-section h2 {
+        font-size: 15px;
+    }
+
+    .mob-flx-clm {
+        flex-direction: column;
+    }
+
+    .paddi {
+        text-align: justify;
+        padding-inline: 15px;
+    }
+
+    .aboutcollege_div_padd {
+        margin-bottom: 21px !important;
+    }
+
+    .abouthospital_div_padd {
+        padding: 1rem;
+    }
+
+    .mob-d-img {
+        margin-right: 21px !important;
+    }
+
+    .mob-about-hos {
+        font-size: 23px !important;
+    }
+
+    .mob-about-hos1 {
+        font-size: 21px !important;
+    }
+
+    .mob-margin {
+        margin: 5px !important
+    }
+
+    .mob-gallery {
+        margin-bottom: 8px !important;
+    }
+
+    .mob-flx-strt {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .btn-block {
+        width: 100% !important;
+    }
+
+    #btn-full-hight {
+        width: 100% !important;
+    }
+}
+
+@media (max-width:420px) {
+    .mob-text-bold {
+        font-size: 16px !important;
+        font-weight: bold;
+    }
+
+    .modal-content {
+        padding: .2rem !important;
+    }
+
+    .modal-dialog {
+        max-width: 92% !important;
+    }
+
+    .m-xs-0 {
+        margin: 0rem !important;
+    }
+
+    .info_hover {
+        margin-bottom: 15px !important;
+    }
+
+    .info_sec {
+        margin-top: 85px;
+    }
+
+    .department_media {
+        margin-left: 3px !important;
+    }
+
+    #common-image {
+        padding-left: 21px;
+    }
+
+    #common-name {
+        padding-left: 28px;
+    }
+
+    .card {
+        margin-left: 37px !important;
+    }
+
+    .text-justify {
+        text-align: justify !important;
+    }
+
+    .h-50 {
+        height: auto !important;
+    }
+
+    /* #brand-section h2 {
+        font-size: 15px !important;
+    } */
+
+    .mob-flx-clm {
+        flex-direction: column;
+        padding: 2rem 0rem !important;
+    }
+
+    .paddi {
+        text-align: justify;
+        padding-inline: 15px;
+    }
+
+    .aboutcollege_div_padd {
+        margin-bottom: 21px !important;
+    }
+
+    .abouthospital_div_padd {
+        padding: 1rem;
+    }
+
+    .mob-d-img {
+        margin-right: 21px !important;
+    }
+
+    .mob-about-hos {
+        font-size: 23px !important;
+    }
+
+    .mob-about-hos1 {
+        font-size: 21px !important;
+    }
+
+    .mob-margin {
+        margin: 5px !important
+    }
+
+    .mob-gallery {
+        margin-bottom: 8px !important;
+    }
+
+    .mob-flx-strt {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .btn-block {
+        width: 100% !important;
+    }
+
+    #btn-full-hight {
+        width: 100% !important;
+    }
+}
+
+
+@media (max-width:320px) {
+    .info_hover {
+        margin-bottom: 15px !important;
+    }
+
+    .info_sec {
+        margin-top: 85px;
+    }
+
+    .department_media {
+        margin-right: 3px !important;
+    }
+
+    #common-image {
+        padding-left: 21px;
+    }
+
+    #common-name {
+        padding-left: 28px;
+    }
+
+    .card {
+        margin-left: 37px !important;
+    }
+
+    .text-justify {
+        text-align: justify !important;
+    }
+
+    .pb_mob {
+        padding-bottom: 33px !important;
+    }
+
+    .h-50 {
+        height: auto !important;
+    }
+
+    /* #brand-section h2 {
+        font-size: 15px !important;
+    } */
+
+    .mob-flx-clm {
+        flex-direction: column;
+    }
+
+    .paddi {
+        text-align: justify;
+        padding-inline: 15px;
+    }
+
+    .aboutcollege_div_padd {
+        margin-bottom: 21px !important;
+    }
+
+    .abouthospital_div_padd {
+        padding: 1rem;
+    }
+
+    .mob-d-img {
+        margin-right: 21px !important;
+    }
+
+    .mob-about-hos {
+        font-size: 23px !important;
+    }
+
+    .mob-about-hos1 {
+        font-size: 21px !important;
+    }
+
+    .mob-margin {
+        margin: 5px !important;
+    }
+
+    .mob-gallery {
+        margin-bottom: 8px !important;
+    }
+
+    .mob-flx-strt {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .btn-block {
+        width: 100% !important;
+    }
+
+    #btn-full-hight {
+        width: 100% !important;
+    }
+
+    .m-small {
+        margin-top: 18px !important;
+    }
+}
+
+.card {
+    background-color: transparent !important;
+}
+
+.text-light {
+    color: white !important;
+}
+@media (max-width: 1024px){
+    
+    .col-1024-12{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+.col-1024-6{
+ width:50%;   
+}
+.px-1024-2{
+    padding:0rem .5rem;
+}
+}
+.width-60{
+    width:60%;
+}
+@media (max-width: 425px){
+    
+    .col-1024-12{
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+.col-1024-6{
+ width:100%;   
+}
+.px-1024-2{
+    padding:0rem .5rem;
+}
+}
+
+.scroll{
+    overflow-X:hidden;
+    overflow-y:auto;
+    height:300px;
+}

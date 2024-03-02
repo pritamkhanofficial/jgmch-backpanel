@@ -701,7 +701,7 @@ function getDateFormat()
                 if($payload->profile_pic === 'default.png'){
                     $payload->user_profile_pic = base_url('public/assets/images/users/').$payload->profile_pic;
                 }else{
-                    $payload->user_profile_pic = getFileURL().$payload->profile_pic;
+                    $payload->user_profile_pic = base_url('get-file/'.$payload->profile_pic);
                 }
             }else{
                 $payload->user_profile_pic = base_url('public/assets/images/users/default.png');

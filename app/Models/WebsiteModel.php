@@ -51,8 +51,31 @@ class WebsiteModel extends Model
     }
     public function softDelete($table, $id){
         return  $this->db->table($table)->update([
-            'deleted_at'=> getCurrentDate(),
-            'deleted_by'=> getUserData()->id
+            'deleted_at'=> getCurrentDate()
         ], ['id'=>$id]);
     }
+
+    public function getSlider(){
+
+        return $this->db->table('sliders')->where(['is_active'=>1,'deleted_at'=>NULL])->get()->getResult();
+
+    }
+    public function getDocument($type){
+        $where = ['doc_type'=>$type,'is_active'=>1,'deleted_at'=>NULL];
+
+        if($type != 'ARS'){
+            $where['end_date <='] = \getCurrentDate();
+        }
+        return $this->db->table('documents')->where($where)->get()->getResult();
+
+    }
+    public function getGallery(){
+        return $this->db->table('gallery')->where(['show_on_home'=>1,'is_active'=>1,'deleted_at'=>NULL])->get()->getResult();
+
+    }
+    public function getHospitalHead(){
+        return $this->db->table('hospital_head')->where(['is_active'=>1,'deleted_at'=>NULL])->limit(3)->get()->getResult();
+
+    }
+
 }

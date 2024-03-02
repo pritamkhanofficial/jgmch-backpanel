@@ -50,8 +50,9 @@ class BackPanelController extends BaseController
         $crud->displayAs('doc_type','Document Type');
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
-        $crud->columns(['title','file', 'doc_type', 'is_active']);
-        $crud->fields(['title','file', 'doc_type', 'is_active','created_by','updated_at','updated_by']);
+        $crud->columns(['title','file', 'doc_type', 'end_date', 'is_active']);
+        $crud->fields(['title','file','description', 'doc_type', 'end_date', 'is_active','created_by','updated_at','updated_by']);
+        $crud->setTexteditor(['description']);
         $crud->fieldType('doc_type', 'dropdown', [
             'NOTICE' => 'Notice',
             'TENDER' => 'Tender',
@@ -85,9 +86,16 @@ class BackPanelController extends BaseController
         $crud->displayAs('image','Gallery Image');
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
-        $crud->columns(['title','image', 'is_active']);
-        $crud->fields(['title','image', 'is_active','created_by','updated_at','updated_by']);
+        $crud->columns(['title','image','show_on_home', 'is_active']);
+        $crud->fields(['title','image', 'show_on_home','is_active','created_by','updated_at','updated_by']);
         $this->fileHandle($crud, 'image','image');
+        $crud->fieldType('show_on_home', 'checkbox_boolean');
+
+        $crud->fieldType('show_on_home', 'dropdown', [
+            '0' => 'No',
+            '1' => 'Yes'
+        ]);
+
 
         if ($crud->getState() === 'delete') {
             
@@ -471,6 +479,32 @@ class BackPanelController extends BaseController
         $crud->unsetExport();
         $crud->setTable('content');
         $crud->setSubject('Content');
+        $output = $crud->render();
+        return view('common', (array)$output);
+    }
+
+    public function hospitalHead(){
+        $crud = new GroceryCrud();
+        $crud->displayAs('image','Head Image');
+        $crud->displayAs('is_active','Status');
+        $crud->where("deleted_at", NULL);
+        $crud->columns(['image','title','phone','email','is_active']);
+        $crud->fields(['image','title','sub_title','phone','email','address','is_active','created_by','updated_at','updated_by']);
+        $this->fileHandle($crud, 'image','image');
+        $crud->setTexteditor(['address']);
+        if ($crud->getState() === 'delete') {
+            $result = $this->websiteModel->softDelete('hospital_head', $crud->getStateInfo()->primary_key);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+        }
+        $crud->unsetPrint();
+        $crud->unsetExport();
+        $crud->setTable('hospital_head');
+        $crud->setSubject('Hospital Head');
         $output = $crud->render();
         return view('common', (array)$output);
     }

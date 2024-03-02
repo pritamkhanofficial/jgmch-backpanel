@@ -31,7 +31,7 @@ class ContentTable extends Migration
             `file_8` varchar(255) DEFAULT NULL,
             `created_at` datetime NOT NULL DEFAULT current_timestamp(),
             `created_by` bigint(20) NOT NULL,
-            `updated_at` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+            `updated_at` datetime DEFAULT NULL,
             `updated_by` bigint(20) DEFAULT NULL,
             PRIMARY KEY (`id`)
            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci");

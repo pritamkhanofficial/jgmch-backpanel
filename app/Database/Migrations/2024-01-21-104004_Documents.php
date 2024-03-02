@@ -49,12 +49,6 @@ class Documents extends Migration
                 'null'           => true
             ],
             'deleted_at datetime default null',
-            'deleted_by' => [
-                'type'           => 'BIGINT',
-                'constraint'     => 20,
-                'unsigned'       => true,
-                'null'           => true
-            ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('documents', true);

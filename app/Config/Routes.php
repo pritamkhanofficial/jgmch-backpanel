@@ -5,7 +5,8 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
+$routes->get('/', 'WebsiteController::home');
 $routes->get('get-file/(:any)', 'FileController::getFile/$1');
 
 $routes->group('back-panel', static function ($routes) {
@@ -42,6 +43,12 @@ $routes->group('back-panel', static function ($routes) {
         $routes->match(['get', 'post'],'content-management/', 'BackPanelController::contentManagement');
         $routes->match(['get', 'post'],'content-management/(:segment)', 'BackPanelController::contentManagement/$1');
         $routes->match(['get', 'post'],'content-management/(:segment)/(:segment)', 'BackPanelController::contentManagement/$1/$2');
+
+
+        $routes->match(['get', 'post'],'hospital-head/', 'BackPanelController::hospitalHead');
+        $routes->match(['get', 'post'],'hospital-head/(:segment)', 'BackPanelController::hospitalHead/$1');
+        $routes->match(['get', 'post'],'hospital-head/(:segment)/(:segment)', 'BackPanelController::hospitalHead/$1/$2');
+
        
     });
 });
