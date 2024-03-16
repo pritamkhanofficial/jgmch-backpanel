@@ -124,7 +124,10 @@ $('.owl-carousel').owlCarousel({
 <script>
 $(function() {
     // $('#main_navbar').bootnavbar();
-    new DataTable('table');
+
+    if(!$('.no-datatable').length){
+        new DataTable('table');
+    }
 })
 </script>
 <script>

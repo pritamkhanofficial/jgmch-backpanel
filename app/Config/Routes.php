@@ -7,6 +7,8 @@ use CodeIgniter\Router\RouteCollection;
  */
 // $routes->get('/', 'Home::index');
 $routes->get('/', 'WebsiteController::home');
+$routes->get('contact', 'WebsiteController::contact');
+$routes->get('inner-page/(:num)', 'WebsiteController::innerPage/$1');
 $routes->get('gallery', 'WebsiteController::gallery');
 $routes->get('department', 'WebsiteController::department');
 $routes->get('department-details/(:num)', 'WebsiteController::departmentDetails/$1');

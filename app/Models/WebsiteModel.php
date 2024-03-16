@@ -114,4 +114,14 @@ class WebsiteModel extends Model
         return $query->get()->getResult();
     }
 
+    public function getInnerPage($id){
+        $where = ['id'=>$id];
+
+        $builder = $this->db->table('content');
+        
+        $builder->where($where);
+        return $builder->get()->getRow();
+
+    }
+
 }

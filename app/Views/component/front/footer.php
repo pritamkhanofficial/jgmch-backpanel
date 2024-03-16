@@ -1,4 +1,10 @@
 <!-- start footer section -->
+
+
+<?php
+$hospital = getHospitalAbout();
+
+?>
 <section id="footer-section">
     <div class="container-fluid bg-darkblue">
         <div class="container py-5">
@@ -6,18 +12,17 @@
                 <div class="col-md-4">
                     <h5 class="text-yellow">Reach Us</h5>
                     <p class="text-light d-flex">
-                        <i class=" text-center"> Email :support@jgmch.ac.in
+                        <i class=" text-center"> Email : <?=$hospital->mail?>
                         </i>
 
                     <div>
-                        <p class="text-light">
-                            Full Address : <span>Jhargram Government Medical College & Hospital, Vidyasagar Pally,
-                                Jhargram, Dist. Jhargram, Pin 721507</span>
-                        </p>
+                        <div class="text-light">
+                            Full Address : <?=$hospital->address?>
+                        </div>
                     </div>
                     <div>
                         <p class="text-light">
-                            Phone no : 03221-299922 / 03221-255145
+                            Phone no : <?=$hospital->hospital_phone?> / <?=$hospital->msvp_phone?>
                         </p>
                     </div>
                 </div>
@@ -69,15 +74,6 @@
 
                         </p>
                     </div>
-
-
-
-
-
-
-
-
-
                 </div>
 
                 <div class="col-md-3 col-12">
@@ -86,23 +82,16 @@
                     </div>
                     <div class="social text-xl-left">
                         <p class="m-0 line-height">
-                            <span><i class="bi bi-caret-right text-yellow"><a
-                                        href="https://jgmch.ac.in/monthlydata.php">Monthly Hospital Data</a></i>
+                            <span><i class="bi bi-caret-right text-yellow"><a href="https://jgmch.ac.in/monthlydata.php">Monthly Hospital Data</a></i>
 
                         </p>
                     </div>
-                    <!--<div><p class="text-light text-center">Lorem ipsum dolor sit</p></div>-->
-                    <!--<div><p class="text-light text-center">Lorem ipsum dolor sit</p></div>-->
-                    <!--<div><p class="text-light text-center">Lorem ipsum dolor sit</p></div>-->
-
-
                 </div>
             </div>
             <hr class="w-100  hr-border">
             <div class="row">
                 <div class="col-md-6 col-12 d-flex all-justify-content-start text-meadle">
-                    <p class="text-white">Copyright <span>&copy;</span> <span class="text-yellow">Jhargram Government
-                            Medical College and Hospital</span></p>
+                    <p class="text-white"><?=$hospital->footer_text?></p>
                 </div>
                 <div class="col-md-6 col-12 d-flex all-justify-content-end">
                     <a href="https://sketchmeglobal.com/" target="_blank">
@@ -115,32 +104,6 @@
 
 
 </section>
-<!-- Modal -->
-<!--<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">-->
-<!--  <div class="carousel-inner">-->
-<!--    <div class="carousel-item active">-->
-<!--      <img src="..." class="d-block w-100" alt="...">-->
-
-<!--    </div>-->
-<!--    <div class="carousel-item">-->
-<!--      <img src="..." class="d-block w-100" alt="...">-->
-
-<!--    </div>-->
-<!--    <div class="carousel-item">-->
-<!--      <img src="..." class="d-block w-100" alt="...">-->
-
-<!--    </div>-->
-<!--  </div>-->
-<!--  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">-->
-<!--    <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-<!--    <span class="visually-hidden">Previous</span>-->
-<!--  </button>-->
-<!--  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">-->
-<!--    <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-<!--    <span class="visually-hidden">Next</span>-->
-<!--  </button>-->
-<!--</div>-->
-<!-- Modal -->
 <div class="modal fade" id="aboutcollege" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

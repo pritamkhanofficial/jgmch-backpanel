@@ -37,17 +37,15 @@
                             Hospital
                         </a>
                         <ul class="dropdown-menu dropdown-men" aria-labelledby="navbarDropdown">
-                            <!-- <li class="nav-item"><a class="dropdown-item" href="course.php">Courses</a></li> -->
                             <li class="dropdown">
                                 <a class="dropdown-item dropdown-toggle text-black" href="#" id="navbarDropdown1"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Facilities
                                 </a>
                                 <ul class="dropdown-menu drop-shadow" aria-labelledby="navbarDropdown1">
-                                    <!--<li class="nav-item"><a class="dropdown-item" href="#">Enrollment students-->
-                                    <!--        data</a></li>-->
+                                  
                                     <li class="nav-item"><a class="dropdown-item"
-                                            href="./Assets for JGMCH/OPD_SCHEDULE_OF_JGMCH.pdf">OPD Schedule</a>
+                                            href="<?=base_url('inner-page/5')?>">OPD Schedule</a>
                                     </li>
                                     <li class="nav-item"><a class="dropdown-item" href="dept.php?dept=beds">No
                                             of beds</a>
@@ -61,8 +59,6 @@
                                             href="https://onlinehmis.wbhealth.gov.in/Login.aspx">OPD ticket
                                             link</a>
                                     </li>
-
-                                    <!--<li class="nav-item"><a class="dropdown-item" href="#">Admission notice</a></li>-->
                                 </ul>
                             </li>
 
@@ -203,7 +199,7 @@
                         </a>
                         <ul class="dropdown-menu dropdown-men" aria-labelledby="navbarDropdown">
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="https://jgmch.ac.in/studentlist.php">Students List (Year wise)</a>
+                                    href="<?=base_url('inner-page/6')?>">Students List (Year wise)</a>
                             </li>
 
                     </li>
@@ -284,8 +280,7 @@
 
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
-                                <!--<li class="nav-item"><a class="dropdown-item" href="#">Enrollment students-->
-                                <!--        data</a></li>-->
+                               
                                 <li class="nav-item"><a class="dropdown-item" href="#">Emergency 24x7</a></li>
                                 <li class="nav-item"><a class="dropdown-item"
                                         href="assets/images/admission/admission-form.pdf">Blood Bank</a>
@@ -330,7 +325,7 @@
                     <a class="nav-link px-2" href="<?=base_url('department')?>"> Department</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-2" href="contact.php">Contacts</a>
+                    <a class="nav-link px-2" href="<?=base_url('contact')?>">Contacts</a>
                 </li>
                 </ul>
             </div>

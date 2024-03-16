@@ -62,4 +62,31 @@ class WebsiteController extends BaseController
             'gallery'=>$gallery
         ]);
     }
+    public function contact()
+    {
+        $gallery = $this->websiteModel->getGallery('gallery');
+        return view('website/contact');
+    }
+
+    public function innerPage($id)
+    {
+        /* $rules = [
+            'id' => ['rules' => 'required|numeric']
+
+        ]; */
+        /* if(!$this->validate($rules)){
+            return redirect()->back();
+        } */
+        if(!is_numeric($id)){
+            return redirect()->back();
+        }
+        // $id = $this->request->getVar('id');
+        
+        $content = $this->websiteModel->getInnerPage($id);
+        if(is_null($content)){
+            return redirect('/');
+        }
+        
+        return view('website/inner-page',['content'=>$content]);
+    }
 }

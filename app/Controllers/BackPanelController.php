@@ -124,17 +124,12 @@ class BackPanelController extends BaseController
         $crud->displayAs('description','About');
         $crud->displayAs('is_active','Status');
         // $crud->where("deleted_at", NULL);
-        $crud->columns(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation']);
-        $crud->fields(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation','description', 'history_and_heritage', 'map', 'address', 'created_by','updated_by']);
-        $crud->setTexteditor(['description', 'history_and_heritage','address']);
+        $crud->columns(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation','mail','hospital_phone']);
+        $crud->fields(['affiliated_to','vice_chancellor', 'registrar', 'year_of_affiliation','description', 'history_and_heritage', 'map', 'address','principle_phone','msvp_phone','msvp_phone_2','mail','contact_info','hospital_phone','footer_text', 'created_by','updated_by']);
+        $crud->setTexteditor(['description', 'history_and_heritage','address','contact_info']);
         // $crud->setFieldUpload(['file', 'is_active','created_by']);
-        $crud->callbackColumn('file', array($this, 'showFile'));
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
-        $crud->fieldType('updated_by', 'hidden', getUserData()->id);
-        /* $crud->callbackAfterInsert(function ($stateParameters) {
-            return $this->saveLogData('add','state',$stateParameters->data);
-        }); */
-        
+        $crud->fieldType('updated_by', 'hidden', getUserData()->id);        
         $crud->callbackBeforeUpdate(
             function ($cbData) {    
                 $cbData->data['updated_by'] = \getUserData()->id;
