@@ -59,6 +59,12 @@
                      </a>
                  </li>
                  <li>
+                     <a href="<?=base_url('back-panel/staff')?>" class="waves-effect">
+                         <i class="  fas fa-images  "></i>
+                         <span>Staff</span>
+                     </a>
+                 </li>
+                 <li>
                      <a href="<?=base_url('back-panel/content-management')?>" class="waves-effect">
                          <i class="  fas fa-images  "></i>
                          <span>Content Management</span>

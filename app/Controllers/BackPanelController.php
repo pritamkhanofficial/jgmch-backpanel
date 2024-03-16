@@ -538,18 +538,12 @@ class BackPanelController extends BaseController
         $crud = new GroceryCrud();
         $crud->displayAs('is_active','Status');
         $crud->displayAs('label','Department Name');
-        $crud->displayAs('type','Department Type');
         $crud->displayAs('is_active','Status');
-        $crud->columns(['label','type','is_active']);
-        $crud->fields(['label','type','image','description','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','is_active','created_by']);
+        $crud->columns(['label','image','is_active']);
+        $crud->fields(['label','image','description','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','is_active','created_by']);
         $crud->setTexteditor(['description']);
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
-        $crud->requiredFields(['label','type']);
-        $crud->fieldType('type', 'dropdown', [
-            'PRECLINICAL' => 'Pre-clinical',
-            'PARACLINICAL' => 'Para-clinical',
-            'CLINICAL' => 'Para-clinical'
-        ]);
+        $crud->requiredFields(['label']);
 
         /* Work With File */
         $crud->callbackColumn('image', array($this, 'showFile'));
@@ -669,6 +663,17 @@ class BackPanelController extends BaseController
             }
         );
 
+        $crud->callbackEditField(
+            'image',
+            function ($data) {
+
+                $html = $this->showFile($data);
+                $html .= '<input id="field-image" type="file" class="form-control mt-2" name="image" value="">';
+
+                $html .= '<input id="field-hidden-image" type="hidden" class="form-control" name="file_hidden_image" value="' . $data . '">';
+                return $html;
+            }
+        );
         $crud->callbackEditField(
             'banner',
             function ($data) {
@@ -913,6 +918,45 @@ class BackPanelController extends BaseController
         $crud->unsetExport();
         $crud->setTable('committee');
         $crud->setSubject('Committee');
+        $output = $crud->render();
+        return view('common', (array)$output);
+    }
+
+    public function staff(){
+        $crud = new GroceryCrud();
+        $crud->displayAs('department_id','Department');
+        $crud->displayAs('designation_id','Designation');
+        $crud->displayAs('is_active','Status');
+        $crud->where("staff.deleted_at", NULL);
+        $crud->columns(['department_id','designation_id','label','type', 'is_active']);
+        $crud->fields(['department_id','designation_id','committee_id','label', 'type','description','is_active','created_by','updated_at','updated_by']);
+        $crud->setRelation('department_id', 'department', 'label');
+        $crud->setRelation('designation_id', 'designation', 'label');
+        $crud->setRelation('committee_id', 'committee', 'label');
+        $crud->fieldType('type', 'dropdown', [
+            'TS' => 'Teaching staff',
+            'NTS' => 'Non-teaching staff'
+        ]);
+        $crud->setTexteditor(['description']);
+        $crud->fieldType('created_by', 'hidden', \getUserData()->id);
+        $crud->fieldType('updated_at', 'hidden', NULL);
+        $crud->fieldType('updated_by', 'hidden', NULL);
+
+        if ($crud->getState() === 'delete') {
+            
+            $result = $this->websiteModel->softDelete('gallery', $crud->getStateInfo()->primary_key);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+            
+        }
+        $crud->unsetPrint();
+        $crud->unsetExport();
+        $crud->setTable('staff');
+        $crud->setSubject('Staff');
         $output = $crud->render();
         return view('common', (array)$output);
     }

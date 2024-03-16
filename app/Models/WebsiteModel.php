@@ -69,13 +69,49 @@ class WebsiteModel extends Model
         return $this->db->table('documents')->where($where)->get()->getResult();
 
     }
-    public function getGallery(){
-        return $this->db->table('gallery')->where(['show_on_home'=>1,'is_active'=>1,'deleted_at'=>NULL])->get()->getResult();
+    public function getGallery($page_type = NULL){
+        $data = [
+            'is_active'=>1,
+            'deleted_at'=>NULL
+        ];
+        if(empty($page_type)){
+            $data['show_on_home'] = 1;
+        }
+        return $this->db->table('gallery')->where($data)->get()->getResult();
 
     }
     public function getHospitalHead(){
         return $this->db->table('hospital_head')->where(['is_active'=>1,'deleted_at'=>NULL])->limit(3)->get()->getResult();
 
+    }
+
+    public function getDepartment($id = NULL){
+        if(!empty($id)){
+
+            return $this->db->table('department')->where(['id'=>$id,'is_active'=>1,'deleted_at'=>NULL])->get()->getRow();
+        }
+        return $this->db->table('department')->where(['is_active'=>1,'deleted_at'=>NULL])->get()->getResult();
+
+    }
+    public function getStaff($id, $type = NULL){
+        $query = $this->db->table('staff');
+        $query->select('department.label AS department, designation.label AS designation, committee.label AS committee, staff.*');
+        if(!empty($type)){
+            if($type == 'department'){
+                $query->where(['department_id'=>$id]);
+            }
+            if($type == 'designation'){
+                $query->where(['designation_id'=>$id]);
+            }
+            if($type == 'committee'){
+                $query->where(['committee_id'=>$id]);
+            }
+        }
+        $query->join('department','staff.department_id=department.id','left');
+        $query->join('designation','staff.designation_id=designation.id','left');
+        $query->join('committee','staff.committee_id=committee.id','left');
+        $query->where(['staff.is_active'=>1,'staff.deleted_at'=>NULL]);
+        return $query->get()->getResult();
     }
 
 }

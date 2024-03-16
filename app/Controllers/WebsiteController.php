@@ -30,4 +30,36 @@ class WebsiteController extends BaseController
             'anti_ragging_section'=>$anti_ragging_section,
         ]);
     }
+    public function department()
+    {
+        $department = $this->websiteModel->getDepartment();
+        return view('website/department',[
+            'department'=>$department
+        ]);
+    }
+    public function departmentDetails($id)
+    {
+        $department = $this->websiteModel->getDepartment($id);
+        $staff = $this->websiteModel->getStaff($id,'department');
+        return view('website/department-details',[
+            'department'=>$department,
+            'staff'=>$staff,
+        ]);
+    }
+    public function committeeDetails($id)
+    {
+        $committee = getCommittee($id);
+        $staff = $this->websiteModel->getStaff($id,'committee');
+        return view('website/committee-details',[
+            'committee'=>$committee,
+            'staff'=>$staff,
+        ]);
+    }
+    public function gallery()
+    {
+        $gallery = $this->websiteModel->getGallery('gallery');
+        return view('website/gallery',[
+            'gallery'=>$gallery
+        ]);
+    }
 }

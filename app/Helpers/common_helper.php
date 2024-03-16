@@ -29,6 +29,15 @@ function getCurrentInstitute($id){
     $sql = "SELECT * FROM institutes WHERE is_active=1 AND is_deleted=0 AND id = ?";
     return  $db->query($sql,[$id])->getRow();
 }
+function getCommittee($id = NULL){
+    $db = Database::connect();
+    if(!empty($id)){
+        $sql = "SELECT * FROM committee WHERE is_active=1 AND deleted_at IS NULL AND id = ?";
+        return  $db->query($sql,[$id])->getRow();
+    }
+    $sql = "SELECT * FROM committee WHERE is_active=1 AND deleted_at IS NULL";
+    return  $db->query($sql)->getResult();
+}
 
 function getHospitalAbout(){
     $db = Database::connect();
