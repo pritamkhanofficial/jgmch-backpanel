@@ -163,20 +163,14 @@ class BackPanelController extends BaseController
     public function contentManagement(){
         $crud = new GroceryCrud();
         $crud->displayAs('file','Document File');
-        $crud->displayAs('page_type','Page');
+        $crud->displayAs('page_id','Page');
         $crud->displayAs('is_active','Status');
-        $crud->columns(['page_type','banner', 'title_1', 'file_1', 'title_2','file_2','title_3','file_3']);
-        $crud->fields(['page_type','banner','content','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','created_by']);
+        $crud->columns(['page_id','banner', 'title_1', 'file_1', 'title_2','file_2','title_3','file_3']);
+        $crud->fields(['page_id','banner','content','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','created_by']);
         $crud->setTexteditor(['content']);
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
-        $crud->requiredFields(['page_type']);
-        $crud->fieldType('page_type', 'dropdown', [
-            '1' => 'Administrative staff',
-            '2' => 'OPD SCHEDULE',
-            '3' => 'Check List',
-            '4' => 'Admission Fees',
-            // 'MENU' => 'Nav Menu'
-        ]);
+        $crud->requiredFields(['page_id']);
+        $crud->setRelation('page_id', 'page', 'label',['is_active' => 1,'deleted_at'=>NULL]);
 
         /* Work With File */
         $crud->callbackColumn('banner', array($this, 'showFile'));
@@ -505,6 +499,37 @@ class BackPanelController extends BaseController
         $crud->unsetExport();
         $crud->setTable('hospital_head');
         $crud->setSubject('Hospital Head');
+        $output = $crud->render();
+        return view('common', (array)$output);
+    }
+
+    public function page(){
+        $crud = new GroceryCrud();
+        $crud->displayAs('label','Page Name');
+        $crud->displayAs('is_active','Status');
+        $crud->where("deleted_at", NULL);
+        $crud->columns(['label', 'is_active']);
+        $crud->fields(['label','is_active','created_by','updated_at','updated_by']);
+        
+        $crud->fieldType('created_by', 'hidden', \getUserData()->id);
+        $crud->fieldType('updated_at', 'hidden', NULL);
+        $crud->fieldType('updated_by', 'hidden', NULL);
+
+        if ($crud->getState() === 'delete') {
+            
+            $result = $this->websiteModel->softDelete('page', $crud->getStateInfo()->primary_key);
+            if($result){
+                return $this->response->setJSON([
+                    'success'=>true,
+                    'success_message'=>"<p>Your data has been successfully deleted from the database.</p>",
+                ]);
+            }
+            
+        }
+        $crud->unsetPrint();
+        $crud->unsetExport();
+        $crud->setTable('page');
+        $crud->setSubject('Page');
         $output = $crud->render();
         return view('common', (array)$output);
     }
