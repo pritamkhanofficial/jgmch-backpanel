@@ -8,7 +8,7 @@ class DocumentsTableColAddUpdate extends Migration
 {
     public function up()
     {
-        $this->forge->dropColumn('documents', 'deleted_by');
+        $this->db->query('ALTER TABLE documents DROP IF EXISTS deleted_by');
 
         $fields = [
             'end_date' => [

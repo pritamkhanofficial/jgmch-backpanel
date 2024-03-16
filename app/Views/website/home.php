@@ -185,10 +185,12 @@
                         <div class="col-md-4">
                             <div class="row justify-content-center align-items-center abouthospital_div_padd">
                                 <div class="col-md-11 col-12  border rounded-3 px-5 py-2">
-
+                                    <?php 
+                                    $hospital = getHospitalAbout();
+                                    ?>
                                     <h5 class="fw-bold pt-2">
                                         Affiliated To</h5>
-                                    <p>West Bengal University Of Health Sciences</p>
+                                    <p><?=$hospital->affiliated_to?></p>
                                 </div>
                             </div>
                         </div>
@@ -196,9 +198,7 @@
                             <div class="row justify-content-center align-items-center abouthospital_div_padd">
                                 <div class="col-md-11 col-12  border rounded-3 px-2 py-1">
                                     <h5 class="fw-bold pt-2">Vice Chancellor & Registrar</h5>
-                                    <p> Prof. (Dr.) Suhrita Paul
-                                        <br> Prof.(Dr.) Indrajit Gupta
-                                    </p>
+                                    <p> <?=$hospital->vice_chancellor?> </p>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +207,7 @@
                                 <div class="col-md-11 col-12  border rounded-3 px-5 py-2">
 
                                     <h5 class="fw-bold pt-2">Year of Affiliation </h5>
-                                    <p>22th September <br>2021</p>
+                                    <p><?=$hospital->year_of_affiliation?></p>
                                 </div>
                             </div>
                         </div>

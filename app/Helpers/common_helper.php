@@ -30,6 +30,12 @@ function getCurrentInstitute($id){
     return  $db->query($sql,[$id])->getRow();
 }
 
+function getHospitalAbout(){
+    $db = Database::connect();
+    $sql = "SELECT * FROM about_hospital";
+    return  $db->query($sql)->getRow();
+}
+
 function UploadFile(\CodeIgniter\HTTP\Files\UploadedFile $imageFile, $folder=NULL, $editFileName = NULL)
 {
     try {
