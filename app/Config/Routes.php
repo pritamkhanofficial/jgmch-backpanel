@@ -53,6 +53,29 @@ $routes->group('back-panel', static function ($routes) {
         $routes->match(['get', 'post'],'page/(:segment)', 'BackPanelController::page/$1');
         $routes->match(['get', 'post'],'page/(:segment)/(:segment)', 'BackPanelController::page/$1/$2');
 
+        $routes->match(['get', 'post'],'department/', 'BackPanelController::department');
+        $routes->match(['get', 'post'],'department/(:segment)', 'BackPanelController::department/$1');
+        $routes->match(['get', 'post'],'department/(:segment)/(:segment)', 'BackPanelController::department/$1/$2');
+
+
+
+        $routes->match(['get', 'post'],'staff/', 'BackPanelController::staff');
+        $routes->match(['get', 'post'],'staff/(:segment)', 'BackPanelController::staff/$1');
+        $routes->match(['get', 'post'],'staff/(:segment)/(:segment)', 'BackPanelController::staff/$1/$2');
+
+
+
+        $routes->match(['get', 'post'],'designation/', 'BackPanelController::designation');
+        $routes->match(['get', 'post'],'designation/(:segment)', 'BackPanelController::designation/$1');
+        $routes->match(['get', 'post'],'designation/(:segment)/(:segment)', 'BackPanelController::designation/$1/$2');
+
+
+
+        $routes->match(['get', 'post'],'committee/', 'BackPanelController::committee');
+        $routes->match(['get', 'post'],'committee/(:segment)', 'BackPanelController::committee/$1');
+        $routes->match(['get', 'post'],'committee/(:segment)/(:segment)', 'BackPanelController::committee/$1/$2');
+
+
        
     });
 });
