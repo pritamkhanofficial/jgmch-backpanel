@@ -15,6 +15,7 @@ class WebsiteController extends BaseController
     {
         $sliders = $this->websiteModel->getSlider();
         $news = $this->websiteModel->getDocument('NE');
+        $scroll_news = $this->websiteModel->getDocument('NEWS');
         $tender = $this->websiteModel->getDocument('TENDER');
         $notice = $this->websiteModel->getDocument('NOTICE');
         $anti_ragging_section = $this->websiteModel->getDocument('ARS');
@@ -23,6 +24,7 @@ class WebsiteController extends BaseController
         return view('website/home',[
             'sliders'=>$sliders,
             'news'=>$news,
+            'scroll_news'=>$scroll_news,
             'tender'=>$tender,
             'notice'=>$notice,
             'gallery'=>$gallery,
@@ -88,5 +90,19 @@ class WebsiteController extends BaseController
         }
         
         return view('website/inner-page',['content'=>$content]);
+    }
+
+    public function headAbout($id)
+    {
+       
+        if(!is_numeric($id)){
+            return redirect()->back();
+        }        
+        $content = $this->websiteModel->headAbout($id);
+        if(is_null($content)){
+            return redirect('/');
+        }
+        
+        return view('website/head-about',['content'=>$content]);
     }
 }

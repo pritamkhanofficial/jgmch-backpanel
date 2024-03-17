@@ -57,8 +57,8 @@ class BackPanelController extends BaseController
             'NOTICE' => 'Notice',
             'TENDER' => 'Tender',
             'NE' => 'News / Events',
-            'ARS' => 'Anti Ragging Section',
-            'MENU' => 'Nav Menu'
+            // 'ARS' => 'Anti Ragging Section',
+            'NEWS' => 'News'
         ]);
         $this->fileHandle($crud, 'file','document');
 
@@ -160,7 +160,7 @@ class BackPanelController extends BaseController
         $crud->displayAs('file','Document File');
         $crud->displayAs('page_id','Page');
         $crud->displayAs('is_active','Status');
-        $crud->columns(['page_id','banner', 'title_1', 'file_1', 'title_2','file_2','title_3','file_3']);
+        $crud->columns(['page_id','banner']);
         $crud->fields(['page_id','banner','content','title_1', 'file_1', 'title_2','file_2','title_3','file_3','title_4','file_4','title_5','file_5','title_6','file_6','title_7','file_7','title_8','file_8','created_by']);
         $crud->setTexteditor(['content']);
         $crud->fieldType('created_by', 'hidden', getUserData()->id);
@@ -478,9 +478,9 @@ class BackPanelController extends BaseController
         $crud->displayAs('is_active','Status');
         $crud->where("deleted_at", NULL);
         $crud->columns(['image','title','phone','email','is_active']);
-        $crud->fields(['image','title','sub_title','phone','email','address','is_active','created_by','updated_at','updated_by']);
+        $crud->fields(['image','title','sub_title','phone','email','address','description','is_active','created_by','updated_at','updated_by']);
         $this->fileHandle($crud, 'image','image');
-        $crud->setTexteditor(['address']);
+        $crud->setTexteditor(['address','description']);
         if ($crud->getState() === 'delete') {
             $result = $this->websiteModel->softDelete('hospital_head', $crud->getStateInfo()->primary_key);
             if($result){

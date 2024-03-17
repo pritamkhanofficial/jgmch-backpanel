@@ -62,11 +62,15 @@ class WebsiteModel extends Model
     }
     public function getDocument($type){
         $where = ['doc_type'=>$type,'is_active'=>1,'deleted_at'=>NULL];
-
+        $builder = $this->db->table('documents');
         if($type != 'ARS'){
-            $where['end_date <='] = \getCurrentDate();
+            $builder->groupStart();
+                $builder->where(['end_date >=' => \getCurrentDate()]);
+                $builder->orWhere(['end_date'=> NULL]);
+            $builder->groupEnd();
         }
-        return $this->db->table('documents')->where($where)->get()->getResult();
+        $builder->where($where);
+        return $builder->get()->getResult();
 
     }
     public function getGallery($page_type = NULL){
@@ -120,6 +124,14 @@ class WebsiteModel extends Model
         $builder = $this->db->table('content');
         $builder->select('page.label AS page, content.*');
         $builder->join('page','content.page_id=page.id','left');
+        $builder->where($where);
+        return $builder->get()->getRow();
+
+    }
+
+    public function headAbout($id){
+        $where = ['is_active'=>1,'deleted_at'=>NULL,'id'=>$id];
+        $builder = $this->db->table('hospital_head');
         $builder->where($where);
         return $builder->get()->getRow();
 

@@ -34,7 +34,7 @@
                  </li>
                  <li>
                      <a href="<?=base_url('back-panel/slider')?>" class="waves-effect">
-                         <i class="bx bxs-slideshow"></i>
+                         <i class="fas fa-sliders-h "></i>
                          <span>Slider</span>
                      </a>
                  </li>
@@ -47,26 +47,26 @@
 
                  <li>
                      <a href="<?=base_url('back-panel/gallery')?>" class="waves-effect">
-                         <i class="  fas fa-images  "></i>
+                         <i class="fa fa-film"></i>
                          <span>Gallery</span>
                      </a>
                  </li>
 
                  <li>
                      <a href="<?=base_url('back-panel/hospital-head')?>" class="waves-effect">
-                         <i class="  fas fa-images  "></i>
+                         <i class="fa fa-id-badge"></i>
                          <span>Hospital Head</span>
                      </a>
                  </li>
                  <li>
                      <a href="<?=base_url('back-panel/staff')?>" class="waves-effect">
-                         <i class="  fas fa-images  "></i>
+                         <i class="fas fa-hospital-user"></i>
                          <span>Staff</span>
                      </a>
                  </li>
                  <li>
                      <a href="<?=base_url('back-panel/content-management')?>" class="waves-effect">
-                         <i class="  fas fa-images  "></i>
+                         <i class="fas fa-tasks"></i>
                          <span>Content Management</span>
                      </a>
                  </li>

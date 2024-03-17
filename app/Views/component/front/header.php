@@ -70,13 +70,13 @@
                                 </a>
                                 <ul class="dropdown-menu drop-shadow" aria-labelledby="navbarDropdown1">
                                     <li class="nav-item"><a class="dropdown-item"
-                                            href="./Assets for JGMCH/General_Information_JGMCH.pdf">General
+                                            href="<?=base_url('inner-page/14')?>">General
                                             information</a>
                                     </li>
                                     <li class="nav-item"><a class="dropdown-item" href="#"> Emergency
                                             service</a></li>
                                     <li class="nav-item"><a class="dropdown-item"
-                                            href="./Assets for JGMCH/OPD SCHEDULE OF JGMCH 19.7.2023.pdf">
+                                            href="<?=base_url('inner-page/15')?>">
                                             Outdoor patient service</a>
                                     </li>
                                     <li class="nav-item"><a class="dropdown-item" href="#">Indoor patient
@@ -104,9 +104,9 @@
                         </a>
                         <ul class="dropdown-menu dropdown-men" aria-labelledby="navbarDropdown">
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="https://jgmch.ac.in/principal.php">Principal</a></li>
-                            <li><a class="dropdown-item" href="https://jgmch.ac.in/msvp.php">MSVP</a></li>
-                            <li class="nav-item"><a class="dropdown-item" href="https://jgmch.ac.in/dean.php"> Dean
+                                    href="<?=base_url('head-about/1')?>">Principal</a></li>
+                            <li><a class="dropdown-item" href="<?=base_url('head-about/2')?>">MSVP</a></li>
+                            <li class="nav-item"><a class="dropdown-item" href="<?=base_url('head-about/3')?>"> Dean
                                     of students affairs</a>
                             </li>
                             <li class="nav-item"><a class="dropdown-item"
@@ -200,8 +200,8 @@
 
                     </li>
 
-                    <li><a class="dropdown-item" href="result.php">Result</a></li>
-                    <li><a class="dropdown-item" href="https://jgmch.ac.in/calender.php">* Academic Calendar</a>
+                    <li><a class="dropdown-item" href="<?=base_url('inner-page/8')?>">Result</a></li>
+                    <li><a class="dropdown-item" href="<?=base_url('inner-page/9')?>">* Academic Calendar</a>
                     </li>
                     <li><a class="dropdown-item" href="#">student notice board</a></li>
                     <li class="nav-item"><a class="dropdown-item" href="#"> Help Desk</a></li>
@@ -214,17 +214,17 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="assets/images/admission/Admission_Challan_Copy.pdf">Admission fee</a>
+                                    href="<?=base_url('inner-page/10')?>">Admission fee</a>
                             </li>
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="assets/images/admission/Check List__2023.pdf">Checklist documents for
+                                    href="<?=base_url('inner-page/11')?>">Checklist documents for
                                     admission process,<br> session 23-24</a>
                             </li>
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="assets/images/admission/Information_bulletin_councelling.pdf">Information
+                                    href="<?=base_url('inner-page/12')?>">Information
                                     bulletin and councelling scheme</a></li>
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="assets/images/admission/Notice_cum_bulletin.pdf">Notice cum bulletin
+                                    href="<?=base_url('inner-page/13')?>">Notice cum bulletin
                                     for NEET UG 23 Counseling</a>
                             </li>
                         </ul>
@@ -279,19 +279,19 @@
                                
                                 <li class="nav-item"><a class="dropdown-item" href="#">Emergency 24x7</a></li>
                                 <li class="nav-item"><a class="dropdown-item"
-                                        href="assets/images/admission/admission-form.pdf">Blood Bank</a>
+                                        href="<?=base_url('inner-page/16')?>">Blood Bank</a>
                                 </li>
                                 <li class="nav-item"><a class="dropdown-item"
-                                        href="assets/images/admission/admission-form.pdf">Ambulance</a>
+                                        href="<?=base_url('inner-page/16')?>">Ambulance</a>
                                 </li>
                                 <li class="nav-item"><a class="dropdown-item"
-                                        href="assets/images/admission/admission-form.pdf"> Laboratory
+                                        href="<?=base_url('inner-page/16')?>"> Laboratory
                                         service</a>
                                 </li>
                             </ul>
                         </li>
                         <li><a class="dropdown-item"
-                                href="./Assets for JGMCH/OPD SCHEDULE OF JGMCH 19.7.2023.pdf">Outdoor Patient
+                                href="<?=base_url('inner-page/15')?>">Outdoor Patient
                                 service</a></li>
                         <li class="nav-item"><a class="dropdown-item" href="#"> Indoor Patient service</a></li>
                         <li class="nav-item"><a class="dropdown-item" href="#"> Responsibility Of The User</a>

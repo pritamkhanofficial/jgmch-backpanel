@@ -46,7 +46,8 @@
                         <h5 class="bg-lightblue text-white mb-0 py-3 mt-2">Anti Ragging Section</h5>
                         <?php foreach($anti_ragging_section as $row){ ?>
                         <div class="col-1024-6 p-0">
-                            <a class="px-1024-2 text-decoration-none border text-xl-left text-info py-1 my-1 d-flex justify-content-between align-items-center" href="<?=base_url('get-file/'.$row->file)?>">
+                            <a class="px-1024-2 text-decoration-none border text-xl-left text-info py-1 my-1 d-flex justify-content-between align-items-center"
+                                href="<?=base_url('get-file/'.$row->file)?>">
                                 <div class="p-2">
                                     <?=  $row->title ?>
                                 </div>
@@ -80,12 +81,14 @@
                         <!--<a style="color:#fff" href="Assets for JGMCH/Housestaff_JGMCH.pdf">Invited for stipendiary Housestaffship</a>-->
                         <div class="ticker__viewport">
                             <ul class="ticker__list" data-ticker="list">
-                                <!--<li class="ticker__item" data-ticker="item"><a href="about.php"><i class="material-icons"-->
-                                <!--            style="position: relative; top: 5px;line-height: 0;"> </i>-->
-                                <!--       will be updated soon-->
-                                <!--    </a></li>-->
+                                <?php if(empty($scroll_news)){ ?>
                                 <li class="ticker__item" data-ticker="item">75% attendance under cctv surveillance is
-                                    mandatory for every MBBS students.</li>
+                                    mandatory for every MBBS students.</li> 
+                                <?php }else{ ?>
+                                <?php foreach($scroll_news AS $row){ ?>
+                                <li class="ticker__item" data-ticker="item"><?=$row->title?></li>
+                                <?php } ?>
+                                <?php } ?>
                             </ul>
                         </div>
                         <!--  -->
@@ -149,7 +152,7 @@
                     <div class="row ">
 
                         <h5 class="text-center my-2 border-bottom"><strong>News/Events</strong></h5>
-                       
+
                         <div class="scroll">
                             <ol class="mx-2">
                                 <?php foreach($news as $row){ ?>
@@ -175,7 +178,7 @@
         <div class="container pt-4">
             <div class="row paddi">
                 <h3 class="text-center pb-3">About the Hospital</h3>
-              
+
             </div>
         </div>
         <div class="container pt-3 pb-5">
