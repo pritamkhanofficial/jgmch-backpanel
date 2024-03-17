@@ -115,10 +115,11 @@ class WebsiteModel extends Model
     }
 
     public function getInnerPage($id){
-        $where = ['id'=>$id];
+        $where = ['content.id'=>$id];
 
         $builder = $this->db->table('content');
-        
+        $builder->select('page.label AS page, content.*');
+        $builder->join('page','content.page_id=page.id','left');
         $builder->where($where);
         return $builder->get()->getRow();
 

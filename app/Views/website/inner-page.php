@@ -12,24 +12,32 @@
     <?=view('component/front/header') ?>
     <!-- start banner section -->
     <div>
+        <?php
+        if(empty($content->banner)){
+        ?>
         <img src="<?=base_url('front/')?>images/banner/banner.png" width="100%">
+        <?php  }else{ ?>
+        <img src="<?=base_url('get-file/' . $content->banner)?>" width="100%">
+        <?php } ?>
     </div>
     <!-- ends banner  section ends -->
     <!-- info / secondary -->
     <div class="container">
-        <h3 class="text-center py-5 fw-bolder mob-about-hos">Academic Calender</h3>
+        <h3 class="text-center py-5 fw-bolder mob-about-hos"><?=$content->page?></h3>
         <div class="row border border-darkblue rounded py-4 my-4">
             <h4 class=" px-4 fw-bolder mob-about-hos1"></h4>
             <div class="text-justify px-4">
                 <table class="table-bordered w-100 no-datatable">
-
                     <tbody>
-
+                        <?php for($i = 1; $i <= 8; $i++) { ?>
+                        <?php if(!empty($content->{'title_'.$i})) { ?>
                         <tr>
-                            <th class="py-2 px-3"> Academic schedule phase 2 Batch 2022-23</th>
-                            <td class="text-center"><a href="Assets for JGMCH/Adobe Scan 13-Dec-2023.pdf">Click here</a>
-                            </td>
+                            <th class="py-2 px-3"> <?=$content->{'title_'.$i}?></th>
+                            <td class="text-center"><a href="<?=base_url('get-file/' . $content->{'file_'.$i})?>"
+                                    target="_blank">Click here</a></td>
                         </tr>
+                        <?php } ?>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

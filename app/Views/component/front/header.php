@@ -97,10 +97,6 @@
                     </li>
                     <li>
 
-
-
-
-
                     <li class="nav-item dropdown">
                         <a class="nav-link px-2 dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -114,7 +110,7 @@
                                     of students affairs</a>
                             </li>
                             <li class="nav-item"><a class="dropdown-item"
-                                    href="Assets for JGMCH/Administration.pdf">Administrative staff</a></li>
+                                    href="<?=base_url('inner-page/7')?>">Administrative staff</a></li>
                             <li class="nav-item"><a class="dropdown-item" href="#">College council</a></li>
                             <li class="nav-item"><a class="dropdown-item" href="#">Rogi kalyan samiti</a></li>
                         </ul>
